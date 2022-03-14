@@ -1,0 +1,574 @@
+---
+title: "Taboo: Behavioral analysis"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+  pdf_document: default
+  word_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r include=FALSE}
+library(tidyverse)
+library(forcats)
+library(lme4)
+```
+
+
+# Load data
+
+```{r}
+# read data
+## setwd("/Users/seantrott/Dropbox/UCSD/Research/Ambiguity/Taboo/Experiment1/analysis/reports")
+df = read.csv("../../data/processed/behavioral_results_public.csv")
+
+```
+
+## Remove sessions 10 and 15
+
+```{r}
+df = df %>%
+  filter((session_id %in% c(10, 15)) == FALSE)
+
+nrow(df)
+length(unique(df$session_id))
+
+df = df %>%
+   filter(Native_Speaker == "Yes")
+
+nrow(df)
+```
+
+
+## Descriptive statistics
+
+```{r}
+nrow(df)
+table(df$session_id)
+table(df$pair_type, df$trial_result)
+
+table(df$Order)
+
+length(unique(df$session_id))
+length(unique(df$ppt_id))
+
+## How many trials per session?
+df_session = df %>%
+  group_by(session_id, Order) %>%
+  summarise(count = n())
+mean(df_session$count)
+median(df_session$count)
+sd(df_session$count)
+table(df_session$Order)
+```
+
+### Check data
+
+
+```{r}
+df_demo = df %>%
+  group_by(ppt_id, Played_before, Gender, Native_Speaker) %>%
+  summarise(vocab = mean(MINT_Score_Uncued_Correct),
+            taboo = mean(Taboo_expertise))
+
+table(df_demo$Native_Speaker)
+table(df_demo$taboo)
+
+df_demo %>%
+  group_by(Native_Speaker) %>%
+  summarise(mean_mint = mean(vocab),
+            count = n())
+
+```
+
+
+
+### Participant-level characteristics
+
+People scored very high on the MINT in general; the lowest score was 19.
+
+```{r}
+df_demo = df %>%
+  group_by(ppt_id, Played_before, Gender) %>%
+  summarise(vocab = mean(MINT_Score_Uncued_Correct),
+            taboo = mean(Taboo_expertise))
+
+table(df_demo$Gender)
+
+df_demo %>%
+  ggplot(aes(x = vocab)) +
+  geom_histogram() +
+  theme_minimal()
+
+df_demo %>%
+  ggplot(aes(x = taboo)) +
+  geom_histogram() +
+  theme_minimal()
+
+table(df_demo$Played_before)
+mean(df_demo$taboo)
+sd(df_demo$taboo)
+```
+
+
+### Partner closeness scores
+
+Strangers were automatically assigned a closeness score of 0.
+
+```{r}
+df %>%
+  ggplot(aes(x = pair_type,
+             y = partner_closeness)) +
+  geom_violin() +
+  theme_minimal()
+
+df %>%
+  group_by(pair_type) %>%
+  summarise(closeness = mean(partner_closeness),
+            sd_close = sd(partner_closeness))
+```
+
+
+# Modeling trial outcomes
+
+There are three possible outcomes:
+
+1) **Winning**: The listener successfully guesses the card.  
+2) **Losing**: The speaker says a taboo word or gestures. (Or, for sessions 1-12, the speaker "skips" the card.)  
+3) **Out of time**: The pair runs out of time on the card.
+
+There are a few ways we might want to *model* these outcomes. We could group (2) and (3) together as a larger category of "Losing". Alternatively, we could analyze `Win` vs. `Lose` separately from `Win` vs. `Out of time`. The issue is complicated by the fact that speakers were allowed to skip cards for session 1-12; if $p(skip)$ differs as a function of `pair_type`, that might in turn affect the distribution of outcomes.
+
+For each analysis, we will first conduct an analysis for **all sessions combined**, as well as the same analyses for only **sessions 12 and on**.
+
+## Descriptive statistics
+
+```{r dpi=300}
+table(df$trial_result) / nrow(df)
+table(df$pair_type, df$trial_result) / nrow(df)
+
+df %>%
+  ggplot(aes(x = pair_type,
+             fill = trial_result)) +
+  geom_bar(stat = "count", position = "dodge") +
+  guides(fill=guide_legend(title="Trial result")) +
+  labs(x = "Relationship type",
+       y = "Count",
+       title = "Trial outcomes by relationship type") +
+  theme_minimal()
+
+
+```
+
+
+## Winning vs. out of time
+
+### All sessions
+
+First, we limit our analysis to trials that were either explicitly won or ran out of time.
+
+```{r}
+df_win_lose = df %>%
+  filter(trial_result %in% c("Won", "Out of time"))
+
+nrow(df_win_lose)
+```
+
+#### Note on random effects structure
+
+Following Barr et al (2013), I begin with the **maximal** random effects structure including all random factors that could explain variance: `ppt_id`, `partner_id`, `Order`, `session_id`, and `deck` (`color`).
+
+I then added a random slope for each random factor for the fixed effect of `pair_type`, which is the main variable we are interested in examining. Then, using nested model comparisons, I selected the random effects structure that was best justified by the data. 
+
+In terms of random slopes, the only factor for which a random slope of `pair_type` explained significant variance was `Order` (i.e., whether participants played with their friend or with a stranger first; strangers were worse when that session began with strangers than when that session began with friends). All random intercepts tested explained additional variance.
+
+```{r}
+model_final_base = glmer(data = df_win_lose,
+                              trial_result ~ 
+                                (1 | ppt_id) +
+                                (1 | partner_id) +
+                                (1 + pair_type | Order) +
+                                (1 | session_id) +
+                                (1 | color),
+                              control=glmerControl(optimizer="bobyqa"),
+                              family = binomial())
+```
+
+
+#### Model comparisons
+
+Now we add the covariates that might be important to account for.
+
+It looks like the MINT score explains a very small amount of variance, and `trial_with_partner` explains significant amounts of variance. The probability of winning (relative to running out of time) increases with each trial one has with a partner.
+
+```{r}
+model_covariates = glmer(data = df_win_lose,
+                          trial_result ~ 
+                          Taboo_expertise +
+                           MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_no_mint = glmer(data = df_win_lose,
+                          trial_result ~ 
+                          Taboo_expertise +
+                           # MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_no_taboo = glmer(data = df_win_lose,
+                          trial_result ~ 
+                          # Taboo_expertise +
+                           MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_no_turn_order = glmer(data = df_win_lose,
+                          trial_result ~ 
+                          Taboo_expertise +
+                           MINT_Score_Uncued_Correct +
+                           # trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+
+anova(model_covariates, model_no_mint)
+anova(model_covariates, model_no_taboo)
+anova(model_covariates, model_no_turn_order)
+summary(model_covariates)
+
+```
+
+#### Primary analyses
+
+It appears that a fixed effect of `pair_type` does not explain significantly more variance than a model omitting this term. A model with an interaction between `pair_type` and `trial_with_partner` does explain marginally more variance (p = .18).
+
+```{r}
+
+model_interaction = glmer(data = df_win_lose,
+                          trial_result ~ 
+                            pair_type * trial_with_partner +
+                           MINT_Score_Uncued_Correct +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        # control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_with_pair_type = glmer(data = df_win_lose,
+                          trial_result ~ 
+                            pair_type +
+                           MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_final_base = glmer(data = df_win_lose,
+                          trial_result ~ 
+                           MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_no_turn = glmer(data = df_win_lose,
+                          trial_result ~ 
+                           MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+summary(model_interaction)
+anova(model_interaction, model_with_pair_type)
+anova(model_with_pair_type, model_final_base)
+anova(model_with_pair_type, model_no_turn)
+```
+
+
+We can visualize this effect:
+
+```{r}
+df_win_lose = df_win_lose %>%
+  mutate(
+    outcome_numeric = case_when(
+      trial_result == "Won" ~ 1,
+      trial_result == "Out of time" ~ 0
+    )
+  )
+
+
+df_win_lose %>%
+  mutate(binned_trial = ntile(trial_with_partner, n = 10)) %>%
+  group_by(binned_trial, pair_type) %>%
+  summarise(success = mean(outcome_numeric),
+            se = sd(outcome_numeric)/sqrt(n())) %>%
+  ggplot(aes(x = binned_trial,
+             y = success,
+             color = pair_type)) +
+  geom_smooth() +
+  geom_errorbar(aes(ymin = success - 2*se, 
+                  ymax = success + 2*se), 
+              width=.2,
+              position=position_dodge(.9)) +
+  labs(x = "Binned Trial With Partner",
+       y = "P(Win vs. Out of Time)",
+       color = "Partner Type") +
+  scale_y_continuous(limits = c(0, 1)) +
+  scale_x_continuous(breaks = c(1:10)) +
+  theme_minimal() +
+  theme(axis.title = element_text(size=rel(1.5)),
+        axis.text = element_text(size = rel(1.5)),
+        legend.text = element_text(size = rel(1.5)),
+        strip.text.x = element_text(size = rel(1.5)),
+        plot.title = element_text(size = rel(1.5)),
+        legend.title = element_text(size = rel(1.5)))
+
+ggsave("../../Figures/behavioral/win_vs_oot.png", dpi = 300)
+
+
+```
+
+
+## Winning vs. losing
+
+First, we limit our analysis to trials that were either explicitly won or lost (produced a taboo word or gesture).
+
+```{r}
+df_win_lose2 = df %>%
+  filter(trial_result %in% c("Won", "Lost"))
+
+nrow(df_win_lose2)
+
+df_win_lose2$trial_result = factor(df_win_lose2$trial_result, levels = c("Lost", "Won"))
+
+table(df_win_lose2$trial_result)
+```
+
+
+#### Note on random effects structure
+
+Following Barr et al (2013), I begin with the **maximal** random effects structure including all random factors that could explain variance: `ppt_id`, `partner_id`, `Order`, `session_id`, and `deck` (`color`).
+
+I then added a random slope for each random factor for the fixed effect of `pair_type`, which is the main variable we are interested in examining. Then, using nested model comparisons, I selected the random effects structure that was best justified by the data. 
+
+No random factors benefitted from a random slope for `pair_type`. Only random intercept for `session_id` explained significant variance, but for now, we live the other random intercepts in provided they don't intereferew ith  model fit.
+
+```{r}
+
+model_final_base = glmer(data = df_win_lose2,
+                              trial_result ~ 
+                                (1 | ppt_id) +
+                                (1 | partner_id) +
+                                (1 | Order) +
+                                (1 | session_id) +
+                                (1 | color),
+                              control=glmerControl(optimizer="bobyqa"),
+                              family = binomial())
+
+```
+
+
+
+#### Model comparisons
+
+Now we add the covariates that might be important to account for.
+
+Only `trial_with_partner` explains significant amounts of variance. Surprisingly, though, the probability of winning (relative to losing by using a taboo word or gesture) **decreases** with each trial one has with a partner.
+
+```{r}
+model_covariates = glmer(data = df_win_lose2,
+                          trial_result ~ 
+                          Taboo_expertise +
+                           MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_no_mint = glmer(data = df_win_lose2,
+                          trial_result ~ 
+                          Taboo_expertise +
+                           # MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_no_taboo = glmer(data = df_win_lose2,
+                          trial_result ~ 
+                          # Taboo_expertise +
+                           MINT_Score_Uncued_Correct +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_no_turn_order = glmer(data = df_win_lose2,
+                          trial_result ~ 
+                          Taboo_expertise +
+                           MINT_Score_Uncued_Correct +
+                           # trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+
+anova(model_covariates, model_no_mint)
+anova(model_covariates, model_no_taboo)
+anova(model_covariates, model_no_turn_order)
+summary(model_covariates)
+
+```
+
+
+We can visualize this effect:
+
+```{r}
+df_win_lose2 = df_win_lose2 %>%
+  mutate(
+    outcome_numeric = case_when(
+      trial_result == "Won" ~ 1,
+      trial_result == "Lost" ~ 0
+    )
+  )
+
+
+df_win_lose2 %>%
+  mutate(binned_trial = ntile(trial_with_partner, n = 10)) %>%
+  group_by(binned_trial, pair_type) %>%
+  summarise(success = mean(outcome_numeric),
+            se = sd(outcome_numeric)/sqrt(n())) %>%
+  ggplot(aes(x = binned_trial,
+             y = success,
+             color = pair_type)) +
+  geom_smooth() +
+  geom_errorbar(aes(ymin = success - 2*se, 
+                  ymax = success + 2*se), 
+              width=.2) +
+  labs(x = "Binned Trial With Partner",
+       y = "P(Win vs. Lose)",
+       color = "Partner Type") +
+  scale_y_continuous(limits = c(0, 1)) +
+  scale_x_continuous(breaks = c(1:10)) +
+  theme_minimal() +
+  theme(axis.title = element_text(size=rel(1.5)),
+        axis.text = element_text(size = rel(1.5)),
+        legend.text = element_text(size = rel(1.5)),
+        strip.text.x = element_text(size = rel(1.5)),
+        plot.title = element_text(size = rel(1.5)),
+        legend.title = element_text(size = rel(1.5)))
+
+ggsave("../../Figures/behavioral/losing.png", dpi = 300)
+
+
+```
+
+
+#### Primary analyses
+
+It appears that a fixed effect of `pair_type` does not explain significantly more variance than a model omitting this term, nor does an interaction between `pair_type * trial_with_partner`. 
+
+```{r}
+
+model_interaction = glmer(data = df_win_lose2,
+                          trial_result ~ 
+                            pair_type * trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        # control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_with_pair_type = glmer(data = df_win_lose2,
+                          trial_result ~ 
+                            pair_type +
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+model_final_base = glmer(data = df_win_lose2,
+                          trial_result ~ 
+                           trial_with_partner +
+                          (1 | ppt_id) +
+                          (1 | partner_id) +
+                          (1 + pair_type | Order) +
+                          (1 | session_id) +
+                          (1 | color),
+                        control=glmerControl(optimizer="bobyqa"),
+                        family = binomial())
+
+summary(model_interaction)
+anova(model_interaction, model_with_pair_type)
+anova(model_with_pair_type, model_final_base)
+```
+
+
+

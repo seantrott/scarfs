@@ -1,0 +1,834 @@
+---
+title: "Taboo: Linguistic analysis"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+  pdf_document: default
+  word_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r include=FALSE}
+library(tidyverse)
+library(forcats)
+library(lme4)
+library(corrplot)
+library(broom.mixed)
+```
+
+
+# Load data
+
+## Taboo data
+
+```{r}
+# setwd("/Users/seantrott/Dropbox/UCSD/Research/Ambiguity/Taboo/Experiment1/analysis/reports")
+df = read.csv("../../data/processed/aligned_results_public.csv")
+nrow(df)
+
+table(df$session)
+length(unique(df$session))
+
+```
+
+
+## Lexical statistics
+
+```{r}
+## Concreteness norms
+df_concreteness = read_csv("../../data/lexical_statistics/brysbaert_norms.csv")
+df_concreteness$word = df_concreteness$Word
+## SUBTLEX frequency data
+df_subtlex = read_csv("../../data/lexical_statistics/SUBTLEXusfrequencyabove1.csv")
+df_subtlex$word = df_subtlex$Word
+## AoA norms
+df_aoa = read_csv("../../data/lexical_statistics/AoA_ratings_Kuperman_et_al_BRM.csv")
+df_aoa$AoA = df_aoa$Rating.Mean
+df_aoa$word = tolower(df_aoa$Word)
+```
+
+
+## Remove non-native speakers
+
+```{r}
+df = df %>%
+  filter(Native_Speaker == "Yes")
+nrow(df)
+length(unique(df$ppt_id))
+```
+
+
+## Merge Taboo data with lexical statistics
+
+### Merge with target concept
+
+We then merge that data with the Taboo data to get `AoA`, `Frequency`, and `Concreteness` information about the target concept.
+
+```{r}
+df$word = tolower(df$card)
+nrow(df)
+
+df_merged = df %>%
+  inner_join(df_concreteness, by = "word") %>%
+  inner_join(df_subtlex, by = "word") %>%
+  inner_join(df_aoa, by = "word") 
+nrow(df_merged)
+
+
+### Now remove critical NA observations for these columns
+df_merged = df_merged %>% 
+  drop_na(Conc.M) %>%
+  drop_na(Lg10WF) %>%
+  drop_na(AoA)
+nrow(df_merged)
+
+
+### Also restrict POS to Noun, Verb, and Adjective 
+df_merged = df_merged %>%
+  filter(Dom_Pos %in% c("Noun", "Verb", "Adjective"))
+nrow(df_merged)
+table(df_merged$Dom_Pos)
+  
+```
+
+
+# Descriptive statistics
+
+## Correlations between lexical statistics
+
+```{r}
+df_select_variables = df_merged %>%
+  dplyr::select(Conc.M, Lg10WF, AoA)
+
+cors = cor(df_select_variables, method='pearson')
+
+corrplot(cors, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45)
+
+
+```
+
+
+## Noun Phrases
+
+Here, we create a subset of the data for expressions that *can conceivably* vary in length. 
+
+```{r}
+table(df_merged$RE_type)
+
+df_just_nps = df_merged %>%
+  filter(RE_type =="full NP")
+
+df_just_nps %>%
+  summarise(mean_length = mean(length),
+            median_length = median(length),
+            sd_length = sd(length))
+
+nrow(df_just_nps)
+
+```
+
+What are the most common determiners / modifiers used for noun phrases that could vary in length?
+
+```{r}
+df_determiners = df_just_nps %>%
+  group_by(det) %>%
+  summarise(count = n(),
+            prop = n() / nrow(df_just_nps))
+
+head(df_determiners[order(-df_determiners$prop), ], 10)
+
+df_determiners$rank = rank(-df_determiners$prop)
+
+df_determiners %>%
+  ggplot(aes(x = rank,
+             y = log(count))) +
+  geom_point() +
+  labs(title = "Determiners: log(frequency) ~ Rank(frequency)") +
+  theme_minimal()
+```
+
+What are the most common head nouns?
+
+```{r}
+df_heads = df_just_nps %>%
+  group_by(head_noun) %>%
+  summarise(count = n(),
+            prop = n() / nrow(df_just_nps))
+
+df_heads$rank = rank(-df_heads$prop)
+
+head(df_heads[order(-df_heads$prop), ], 10)
+
+df_heads %>%
+  ggplot(aes(x = rank,
+             y = log(count))) +
+  geom_point() +
+  labs(title = "Head nouns: log(frequency) ~ Rank(frequency)") +
+  theme_minimal()
+```
+
+
+# Primary analysis 1: Does common ground influence the length of referring expressions?
+
+First, we build a series of nested models. We consider only noun phrases that could conceivably vary in length (i.e., we exclude pronouns).
+
+```{r}
+model_full = glmer(data = df_just_nps,
+                   length ~ 
+                     pair_type +
+                     trial_with_partner +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = poisson())
+
+
+model_no_pair_type = glmer(data = df_just_nps,
+                   length ~ 
+                     # pair_type +
+                     trial_with_partner +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = poisson())
+
+model_no_twp = glmer(data = df_just_nps,
+                   length ~ 
+                     pair_type +
+                     # trial_with_partner +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = poisson())
+
+anova(model_full, model_no_pair_type)
+anova(model_full, model_no_twp)
+
+```
+
+
+We can also visualize the coefficients from this full model:
+
+```{r}
+summary(model_full)
+df_tidy = broom.mixed::tidy(model_full)
+
+df_tidy %>%
+  filter(effect == "fixed") %>%
+  ggplot(aes(x = term,
+             y = estimate)) +
+  geom_point() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  geom_errorbar(aes(ymin = estimate - 2*std.error, 
+                    ymax = estimate + 2*std.error), 
+                width=.2,
+                position=position_dodge(.9)) +
+  labs(x = "Predictor",
+       y = "Estimate") +
+  theme_minimal()
+```
+
+
+## Visualizations
+
+```{r}
+
+df_just_nps %>%
+  ggplot(aes(x = pair_type,
+             y = length,
+             color = RE_type_granular)) +
+  # geom_point(stat = "summary", fun.y = "mean") +
+  stat_summary (fun = function(x){mean(x)},
+              fun.min = function(x){mean(x) - 2*sd(x)/sqrt(length(x))},
+              fun.max = function(x){mean(x) + 2*sd(x)/sqrt(length(x))},
+              geom= 'pointrange', 
+              position=position_dodge(width=0.95)) +
+  labs(x = "Relationship",
+       y = "Number of words",
+       color = "RE Form") +
+  theme_minimal()
+
+
+df_just_nps %>%
+  ggplot(aes(x = length)) +
+  geom_histogram(bins = 8) +
+  facet_wrap(~pair_type + RE_type_granular) +
+  labs(x = "Number of words") +
+  theme_minimal()
+  
+```
+
+
+
+# Analysis 2: Does common ground influence referential form?
+
+```{r}
+df_restricted_form = df_merged %>%
+  filter(RE_type %in% c('full NP', 'PRP 3rd'))
+df_restricted_form$RE_type = factor(df_restricted_form$RE_type,
+                                    levels = c("full NP", "PRP 3rd"))
+nrow(df_restricted_form)
+
+model_full = glmer(data = df_restricted_form,
+                   RE_type ~ 
+                     pair_type +
+                     trial_with_partner +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_no_pair_type = glmer(data = df_restricted_form,
+                   RE_type ~ 
+                     # pair_type +
+                     trial_with_partner +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_no_twp = glmer(data = df_restricted_form,
+                   RE_type ~ 
+                     pair_type +
+                     # trial_with_partner +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+anova(model_full, model_no_pair_type)
+anova(model_full, model_no_twp)
+
+```
+
+
+We can also visualize the coefficients from this full model:
+
+```{r}
+summary(model_full)
+
+df_tidy = broom.mixed::tidy(model_full)
+
+df_tidy %>%
+  filter(effect == "fixed") %>%
+  ggplot(aes(x = term,
+             y = estimate)) +
+  geom_point() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  geom_errorbar(aes(ymin = estimate - 2*std.error, 
+                    ymax = estimate + 2*std.error), 
+                width=.2,
+                position=position_dodge(.9)) +
+  labs(x = "Predictor",
+       y = "Estimate") +
+  theme_minimal()
+```
+
+
+## Visualizations
+
+```{r}
+df_restricted_form %>%
+  ggplot(aes(x = pair_type,
+             fill = RE_type)) +
+  geom_bar(stat = "count", position = "dodge") +
+  theme_minimal()
+
+df_restricted_form %>%
+  # Set full NP = 0, PRP 3rd = 1
+  mutate(re_numeric = as.numeric(RE_type) - 1) %>%
+  ggplot(aes(x = pair_type,
+             y = re_numeric)) +
+  stat_summary (fun = function(x){mean(x)},
+              fun.min = function(x){mean(x) - 2*sd(x)/sqrt(length(x))},
+              fun.max = function(x){mean(x) + 2*sd(x)/sqrt(length(x))},
+              geom= 'pointrange', 
+              position=position_dodge(width=0.95)) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(x = "Pair Type",
+       y = "P(3rd-person pronoun)") +
+  theme_minimal()
+
+
+df_restricted_form %>%
+  # Set full NP = 0, PRP 3rd = 1
+  mutate(re_numeric = as.numeric(RE_type) - 1) %>%
+  ggplot(aes(x = trial_with_partner,
+             y = re_numeric,
+             color = pair_type)) +
+  stat_summary (fun = function(x){mean(x)},
+              fun.min = function(x){mean(x) - 2*sd(x)/sqrt(length(x))},
+              fun.max = function(x){mean(x) + 2*sd(x)/sqrt(length(x))},
+              geom= 'pointrange', 
+              position=position_dodge(width=0.95),
+              alpha = .6) +
+  labs(x = "Trial with partner",
+       y = "P(3rd-person pronoun)") +
+  guides(fill=guide_legend(title="Pair Type")) +
+  scale_y_continuous(limits = c(0, 1)) +
+  theme_minimal()
+```
+
+
+
+
+
+# Analysis 3: Do features of the RE interact with common ground to predict communicative success?
+
+Here, we again limit our analysis to `full NPs` and `3rd-person pronouns`. 
+
+```{r}
+df_restricted_form = df_merged %>%
+  filter(RE_type %in% c('full NP', 'PRP 3rd'))
+df_restricted_form$RE_type = factor(df_restricted_form$RE_type,
+                                    levels = c("full NP", "PRP 3rd"))
+nrow(df_restricted_form)
+table(df_restricted_form$RE_type)
+```
+
+
+## Win vs. Out of Time
+
+First, we consider the contrast between `Win/Out of time`.
+
+```{r}
+
+df_win_oot = df_restricted_form %>%
+  filter(trial_result != "Lost")
+df_win_oot$trial_result = factor(df_win_oot$trial_result, levels = c("Out of time", "Won"))
+nrow(df_win_oot)
+table(df_win_oot$trial_result)
+
+model_full = glmer(data = df_win_oot,
+                   trial_result ~ 
+                     pair_type * RE_type +
+                     trial_with_partner * RE_type +
+                     pair_type * length +
+                     trial_with_partner * length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_r1 = glmer(data = df_win_oot,
+                   trial_result ~ 
+                     pair_type + RE_type +
+                     trial_with_partner * RE_type +
+                     pair_type * length +
+                     trial_with_partner * length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_r2 = glmer(data = df_win_oot,
+                   trial_result ~ 
+                     pair_type * RE_type +
+                     trial_with_partner + RE_type +
+                     pair_type * length +
+                     trial_with_partner * length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_r3 = glmer(data = df_win_oot,
+                   trial_result ~ 
+                     pair_type * RE_type +
+                     trial_with_partner * RE_type +
+                     pair_type + length +
+                     trial_with_partner * length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_r4 = glmer(data = df_win_oot,
+                   trial_result ~ 
+                     pair_type * RE_type +
+                     trial_with_partner * RE_type +
+                     pair_type * length +
+                     trial_with_partner + length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+
+
+anova(model_full, model_r1)
+anova(model_full, model_r2)
+anova(model_full, model_r3)
+anova(model_full, model_r4)
+
+```
+
+
+We can also visualize the coefficients from this full model:
+
+```{r}
+summary(model_full)
+df_tidy = broom.mixed::tidy(model_full)
+
+df_tidy %>%
+  filter(effect == "fixed") %>%
+  ggplot(aes(x = term,
+             y = estimate)) +
+  geom_point() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  geom_errorbar(aes(ymin = estimate - 2*std.error, 
+                    ymax = estimate + 2*std.error), 
+                width=.2,
+                position=position_dodge(.9)) +
+  labs(x = "Predictor",
+       y = "Estimate") +
+  theme_minimal()
+```
+
+
+## Visualizations
+
+```{r}
+df_win_oot = df_win_oot %>%
+  mutate(
+    outcome_numeric = case_when(
+      trial_result == "Won" ~ 1,
+      trial_result == "Out of time" ~ 0
+    )
+  )
+
+df_win_oot %>%
+  ggplot(aes(x = pair_type,
+             y = length,
+             color = trial_result)) +
+  stat_summary (fun = function(x){mean(x)},
+              fun.min = function(x){mean(x) - 2*sd(x)/sqrt(length(x))},
+              fun.max = function(x){mean(x) + 2*sd(x)/sqrt(length(x))},
+              geom= 'pointrange', 
+              position=position_dodge(width=0.95),
+              alpha = .6) +
+  labs(x = "Pair Type",
+       y = "NP Length") +
+  guides(color=guide_legend(title="Trial Result")) +
+  theme_minimal()
+
+df_win_oot %>%
+  ggplot(aes(x = pair_type,
+             y = outcome_numeric,
+             color = RE_type)) +
+  stat_summary (fun = function(x){mean(x)},
+              fun.min = function(x){mean(x) - 2*sd(x)/sqrt(length(x))},
+              fun.max = function(x){mean(x) + 2*sd(x)/sqrt(length(x))},
+              geom= 'pointrange', 
+              position=position_dodge(width=0.95),
+              alpha = .6) +
+  labs(x = "Pair Type",
+       y = "P(success)") +
+  guides(color=guide_legend(title="RE Type")) +
+  theme_minimal()
+
+
+
+```
+
+
+
+
+## Win vs. Out of Time
+
+First, we consider the contrast between `Win/Out of time`.
+
+```{r}
+
+df_win_lose = df_restricted_form %>%
+  filter(trial_result != "Out of time")
+df_win_lose$trial_result = factor(df_win_lose$trial_result, levels = c("Lost", "Won"))
+nrow(df_win_lose)
+table(df_win_lose$trial_result)
+
+model_full = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     pair_type * RE_type +
+                     trial_with_partner * RE_type +
+                     pair_type * length +
+                     trial_with_partner * length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+
+model_r1 = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     pair_type + RE_type +
+                     trial_with_partner * RE_type +
+                     pair_type * length +
+                     trial_with_partner * length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_r2 = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     pair_type * RE_type +
+                     trial_with_partner + RE_type +
+                     pair_type * length +
+                     trial_with_partner * length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_r3 = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     pair_type * RE_type +
+                     trial_with_partner * RE_type +
+                     pair_type + length +
+                     trial_with_partner * length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+model_r4 = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     pair_type * RE_type +
+                     trial_with_partner * RE_type +
+                     pair_type * length +
+                     trial_with_partner + length +
+                     MINT_Score_Uncued_Correct +
+                     Taboo_expertise +
+                     Lg10WF +
+                     AoA +
+                     Conc.M +
+                     Dom_Pos +
+                    (1 | ppt_id) +
+                    (1 | partner_id) +
+                    (1 | Order) +
+                    (1 | session_id) +
+                    (1 | color),
+                   family = binomial(),
+                   control=glmerControl(optimizer="bobyqa"))
+
+
+
+anova(model_full, model_r1)
+anova(model_full, model_r2)
+anova(model_full, model_r3)
+anova(model_full, model_r4)
+```
+
+
+We can also visualize the coefficients from this full model:
+
+```{r}
+summary(model_full)
+df_tidy = broom.mixed::tidy(model_full)
+
+df_tidy %>%
+  filter(effect == "fixed") %>%
+  ggplot(aes(x = term,
+             y = estimate)) +
+  geom_point() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  geom_errorbar(aes(ymin = estimate - 2*std.error, 
+                    ymax = estimate + 2*std.error), 
+                width=.2,
+                position=position_dodge(.9)) +
+  labs(x = "Predictor",
+       y = "Estimate") +
+  theme_minimal()
+```
+
+
+## Visualizations
+
+```{r}
+df_win_lose = df_win_lose %>%
+  mutate(
+    outcome_numeric = case_when(
+      trial_result == "Won" ~ 1,
+      trial_result == "Lost" ~ 0
+    )
+  )
+
+df_win_lose %>%
+  ggplot(aes(x = pair_type,
+             y = length,
+             color = trial_result)) +
+  stat_summary (fun = function(x){mean(x)},
+              fun.min = function(x){mean(x) - 2*sd(x)/sqrt(length(x))},
+              fun.max = function(x){mean(x) + 2*sd(x)/sqrt(length(x))},
+              geom= 'pointrange', 
+              position=position_dodge(width=0.95),
+              alpha = .6) +
+  labs(x = "Pair Type",
+       y = "NP Length") +
+  guides(color=guide_legend(title="Trial Result")) +
+  theme_minimal()
+
+df_win_lose %>%
+  ggplot(aes(x = pair_type,
+             y = outcome_numeric,
+             color = RE_type)) +
+  stat_summary (fun = function(x){mean(x)},
+              fun.min = function(x){mean(x) - 2*sd(x)/sqrt(length(x))},
+              fun.max = function(x){mean(x) + 2*sd(x)/sqrt(length(x))},
+              geom= 'pointrange', 
+              position=position_dodge(width=0.95),
+              alpha = .6) +
+  labs(x = "Pair Type",
+       y = "P(success)") +
+  guides(color=guide_legend(title="RE Type")) +
+  theme_minimal()
+
+
+
+```
+
+
+

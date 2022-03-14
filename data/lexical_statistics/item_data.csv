@@ -1,0 +1,559 @@
+Item #,Deck color,Word to be explained,eliminated because...,cue 1,cue 2,cue 3 ,cue 4,cue 5,Notes,Coarse_grained_LZ,Coarse_grained_EW
+48,yellow,Indian food,other (make note in column M),spicy,ethnic,curry,tandoori,rice,not a proper noun but uses a proper noun,,
+65,blue,dean's list,other (make note in column M),school,grades,ranking,honor roll,college,is this a proper noun?,,
+129,blue,cheddar,other (make note in column M),Wisconsin,cheese,sharp,dairy,cracker,I'm not entirely sure if this is a proper noun or just regular and should stay,,
+218,yellow,teriyaki,other (make note in column M),sweet,Japanese,chicken,sauce,rice,is this a proper noun?,,
+5,red,Simon Cowell,proper name,American Idol,music,judge,contest,talent,,,
+6,red,Michael Phelps,proper name,swimmer,Olympics,gold medals,Beijing,athlete,,,
+10,purple,Paris,proper name,France,French,Eiffel Tower,Louvre Museum,Hilton,,,
+11,purple,Las Vegas,proper name,casino,gambling,shows,slot machine,Nevada,,,
+13,blue,Big Ben,proper name,London,clock,landmark,bell,England,,,
+14,purple,Loch Ness Monster,proper name,Scotland,creature,lake,water,neck,,,
+15,purple,Babe Ruth,proper name,baseball,home run,New York Yankees,candy bar,sport,,,
+16,blue,Bollywood,proper name,India,movies,films,famous,Hollywood,,,
+17,red,Statue of Liberty,proper name,torch,lady,New York,landmark,Ellis Island,,,
+19,blue,Achilles,proper name,heel,Greek,hero,mythology,weak,,,
+20,purple,Himalayas,proper name,mountains,Everest,high,climb,peaks,,,
+21,purple,Norway,proper name,country,Scandinavian,Europe,Sweden,Oslo,,,
+23,yellow,Kentucky,proper name,state,derby,fried chicken,bluegrass,bourbon,,,
+24,blue,Gabby Douglas,proper name,Flying Squirrel,gymnast,gold,Olympics,US,,,
+25,blue,Aladdin,proper name,cartoon,thief,genie,Disney,lamp,,,
+26,purple,Mars,proper name,red planet,venus,men,attacks,war,,,
+27,yellow,Jedi,proper name,lightsaber,force,Skywalker,Star Wars,Yoda,,,
+28,purple,Eiffel Tower,proper name,Paris,landmark,tall,iron,structure,,,
+35,purple,New Year's Eve,proper name,party,Times Squared,January,resolution,midnight,,,
+36,blue,Australia,proper name,kangaroo,Down under,koala,Sydney,outback,,,
+37,blue,Asia,proper name,Orient,continent,China,Europe,land,,,
+38,blue,Batman,proper name,Robin,Gotham Vity,superhero,caped,Joker,,,
+39,blue,Broadway,proper name,New York City,stage,show,theater,star,"Is this a proper noun?  If yes, it stays eliminated, if no, it can stay in",,
+43,red,Venus,proper name,love,goddess,planet,flytrap,beauty,,,
+44,yellow,Nascar,proper name,stock car,sponsors,racetrack,high-speed,lap,,,
+45,blue,Lady Gaga,proper name,pop star,poker,costumes,monster,fame,,,
+46,purple,Mother Nature,proper name,environment,storm,weather,father,outdoors,,,
+47,red,Tooth Fairy,proper name,bed,pillow,money,loose,night,,,
+49,purple,October,proper name,month,September,November,fall,fest,,,
+50,blue,Stone Age,proper name,caveman,Flintstones,prehistoric,time,dinosaurs,,,
+1,blue,extreme,stays in,Sports,Athlete,Temperature,Radical,difficulty,,property,property
+54,blue,ambassador,stays in,diplomat,United Nations,country,embassy,foreign,,entity,entity
+55,blue,brain,stays in,smart,head,mind,skull,cranium,,entity,entity
+56,blue,farm,stays in,land,cow,milk,stand,vegetable,,entity/event,entity/event
+57,blue,camp,stays in,fire,woods,summer,tent,backpack,,entity/event,entity/event
+58,blue,lifeguard,stays in,pool,beach,sim,drown,save,,entity,entity
+59,blue,luggage,stays in,baggage,suitcase,travel,vacation,pack,,entity,entity
+60,blue,hose,stays in,water,rubber,stockings,pant,sprinkler,,entity/event,entity/event
+61,blue,aspirin,stays in,pill,headache,medicine,dosage,pharmacy,,entity,entity
+62,blue,dead end,stays in,street,exit,road,job,cul-de-sac,,entity,other
+63,blue,dove,stays in,bird,peace,pigeon,white,soap,,entity,entity
+64,blue,dare,stays in,truth,challenge,courage,bold,provoke,,entity/event,entity/event
+66,blue,amnesia,stays in,forget,memory,remmeber,head,bump,,entity,other
+67,blue,caricature,stays in,cartoon,drawing,artist,portrait,distort,,entity/event,entity/event
+68,blue,call,stays in,phone,dial,back,answer,talk,,entity/event,entity/event
+69,blue,dribble,stays in,drool,saliva,spit,basketball,bounce,,entity/event,entity/event
+70,blue,blush,stays in,red,cheeks,makeup,embarrass,face,,entity/event,entity/event
+71,blue,dust,stays in,dirt,vacuum,collect,clean,bunnies,,entity/event,entity/event
+72,blue,flashlight,stays in,batteries,beam,shine,dark,hand,,entity,entity
+73,blue,blister,stays in,sunburn,bubble,shoes,skin,rub,,entity/event,entity/event
+74,blue,battery,stays in,car,charge,size,jump,cell,,entity,entity/event
+75,blue,bowling alley,stays in,pins,shoes,spare,strike,balls,,entity,entity
+76,blue,bald,stays in,head,hair,spot,rug,toupee,,property,other
+77,blue,boardwalk,stays in,Atlantic City,beach,pier,Monopoly,Park Place,,entity,entity
+78,blue,blast,stays in,dynamite,explosion,party,loud,off,,entity/event,entity/event
+79,blue,pyramid,stays in,Egypt,tombs,pharaohs,King Tut,buried,,entity,other
+80,blue,applause,stays in,cheers,clapping,ovation,perform,hand,,entity,entity/event
+81,blue,deal,stays in,sale,day,cards,breaker,bargain,,entity/event,entity/event
+82,blue,champagne,stays in,wine,bubbles,cork,toast,celebrate,,entity,entity
+83,blue,doctor,stays in,scrubs,medical,hospital,nurse,surgeon,,entity/event,entity/event
+84,blue,mansion,stays in,haunted,celebrity,estate,live,rich,,entity,entity
+85,blue,bunny,stays in,rabbit,pet,ears,animal,Easter,,entity,entity
+86,blue,oil,stays in,price,well,drill,car,olive,,entity/event,entity/event
+87,blue,book,stays in,paperback,pages,novel,library,read,,entity/event,entity/event
+88,blue,army,stays in,navy,soldier,draft,service,military,,entity,entity
+89,blue,bayou,stays in,water,swamp,Louisiana,delta,south,,entity,entity
+90,blue,drive,stays in,car,highway,license,scenic,way,,entity/event,entity/event
+91,blue,basement,stays in,cellar,apartment,house,finished,downstairs,,entity,entity
+92,blue,daydream,stays in,think,sleep,fantasize,bored,mind,,entity/event,entity/event
+93,blue,polar bear,stays in,white,zoo,snow,cold,brown,,entity,entity
+94,blue,balloon,stays in,helium,blow,candles,pop,birthday,,entity/event,entity/event
+95,blue,crutches,stays in,broken,leg,cane,cast,walk,,entity,entity
+96,blue,dip,stays in,vegetable,chip,swim,stick,oil,,entity/event,entity/event
+97,blue,ladybug,stays in,insect,beetle,spotted,red,good luck,,entity,entity
+98,blue,bridge,stays in,Brooklyn,Golden Gate,water,over,cross,,entity/event,entity/event
+99,blue,fame,stays in,celebrity,fleeting,fame,hall,glory,,entity,entity
+100,blue,freshen,stays in,up,renew,revive,clean,cleanse,,event,event
+101,blue,immortal,stays in,die,live,forever,eternity,youth,,entity/property,property
+102,blue,batter,stays in,baseball,hitter,pitcher,cake,mix,,entity/event,entity/event
+103,blue,shadow,stays in,sunlight,shade,eye,casts,meat,,entity/event,entity/event
+104,blue,design,stays in,interior,graphic,artist,fashion,trends,,entity/event,entity/event
+105,blue,acne,stays in,zits,teenager,pimple,face,Clearasil,,entity,entity
+106,blue,cologne,stays in,perfume,scent,smell,aftershave,fragrance,,entity,entity
+107,blue,adhesive,stays in,glue,sticky,paste,tape,together,,entity/property,other
+108,blue,chef,stays in,kitchen,cook,top,restaurant,celebrity,,entity,entity
+109,blue,headline,stays in,news,act,performer,title,star,,entity/event,entity/event
+110,blue,flames,stays in,fire,red,orange,down,Calgary,,entity,entity
+111,blue,defrost,stays in,ice,freezer,thaw,melt,refrigerator,,event,event
+112,blue,career,stays in,profession,job,vocation,living,work,,entity,entity
+113,blue,gallon,stays in,measurement,quart,gasoline,pint,milk,,entity,entity
+114,blue,burp,stays in,belch,baby,gas,air,eat,,entity/event,entity/event
+115,blue,claustrophobia,stays in,fear,close,feeling,trapped,panic,,entity,entity
+116,blue,chocolate,stays in,cocoa,bar,vanilla,candy bar,chip,,entity/property,entity
+117,blue,beret,stays in,hat,French,cap,green,artist,,entity,entity
+118,blue,elf,stays in,fairy,Will Ferrell,little,Santa,Keebler,,entity,entity
+119,blue,clown,stays in,circus,jester,birthday party,funny,costume,,entity/event,entity/event
+120,blue,motorcycle,stays in,leather,helmet,bike,ride,Harley-Davidson,,entity,entity
+121,blue,breeze,stays in,ocean,warm,isalnd,easy,sweater,,entity/event,entity/event
+122,blue,cheat,stays in,scam,fraud,swindle,dupe,games,,entity/event,entity/event
+123,blue,cartoon,stays in,comics,animated,draw,television,character,,entity/property,entity
+124,blue,bath,stays in,tub,water,relax,shower,bubble,,entity,entity
+125,blue,academy,stays in,naval,awards,school,police,Oscars,,entity,entity
+126,blue,airport,stays in,travel,planes,security,takeoff,fly,,entity,entity
+127,blue,blink,stays in,eye,lid,flash,red,light,,entity/event,entity/event
+128,blue,postcard,stays in,mail,picture,stamp,vacation,send,,entity,entity
+130,blue,cheer,stays in,yell,support,toast,fans,hurrah,,entity/event,entity/event
+131,blue,downtown,stays in,go,city,shopping,urban,Main Street,,entity/property,other
+132,blue,carpet,stays in,floor,rug,hardwood,vacuum,shag,,entity/event,entity/event
+133,blue,beach,stays in,seashore,sand,waves,shells,ocean,,entity/event,entity/event
+134,blue,cowboy,stays in,hat,horse,west,cattle,Dallas,,entity,entity
+135,blue,honeymoon,stays in,marriage,newlyweds,Niagra Falls,trip,vacation,,entity/event,entity/event
+136,blue,handcuffs,stays in,wrist,police,jail,arrest,criminal,,entity,entity
+137,blue,crawl,stays in,baby,walk,learn,knees,spider,,entity/event,entity/event
+138,blue,bargain,stays in,price,deal,wholesale,shops,haggle,,entity/event,entity/event
+139,blue,barn,stays in,farm,horse,animals,door,hay,,entity,entity
+140,blue,fingerprint,stays in,hand,unique,evidence,crime,dust,,entity/event,entity/event
+141,blue,bench,stays in,sit,play,judge,seat,park,,entity/event,entity/event
+142,blue,gasp,stays in,sound,shock,surprise,breath,noise,,entity/event,entity/event
+143,blue,cactus,stays in,grow,needles,desert,plant,sharp,,entity,entity
+144,blue,antique,stays in,old,ancient,dated,collector,furniture,,entity/property,property
+145,blue,battle,stays in,war,fight,combat,army,conflict,,entity/event,entity/event
+146,blue,bikini,stays in,swimsuit,two-piece,beach,wear,bathing,,entity,entity
+147,blue,bacon,stays in,pig,eat,breakfast,sausage,eggs,,entity,entity
+148,blue,bag,stays in,paper,garbage,brown,purse,plastic,,entity/event,entity/event
+149,blue,pitch,stays in,toss,throw,baseball,sales,horseshoes,,entity/event,entity/event
+150,blue,bartender,stays in,drinks,restaurant,alcohol,mixes,cocktail,,entity,entity
+151,blue,calories,stays in,count,burn,low,food,weight,,entity,entity
+152,blue,dorm,stays in,college,student,home,campus,room,,entity,entity/event
+153,blue,atlas,stays in,map,book,chart,world,globe,,entity,entity
+154,blue,cotton,stays in,white,ball,clothes,material,organic,,entity/property,entity
+155,blue,busboy,stays in,restaurant,waiter,dishes,clears,tables,,entity,entity
+156,blue,bakery,stays in,bread,cake,pastry,rolls,fresh,,entity,entity
+157,blue,appendix,stays in,index,book,emergency,scar,stomach,,entity,entity
+158,blue,eyelash,stays in,hair,mascara,lid,curler,comb,,entity,entity
+159,blue,ache,stays in,tooth,head,pain,sore,back,,entity/event,entity/event
+160,blue,cottage,stays in,country,cheese,house,cabin,little,,entity,entity
+161,blue,bait,stays in,worms,fishing,hook,lure,catch,,entity/event,entity/event
+162,blue,cherry,stays in,fruit,red,tree,blossoms,sundae,,entity,entity
+163,blue,backpack,stays in,school,student,books,hike,bag,,entity/event,entity/event
+164,blue,angel,stays in,heaven,devil,halo,wings,sweet,,entity,entity
+165,blue,cockroach,stays in,bug,city,pest,kitchen,insect,,entity,entity
+166,blue,bloom,stays in,flowers,spring,annual,plant,flourish,,entity/event,entity/event
+167,blue,fidget,stays in,move,restless,sit still, impatient,hair,,entity/event,entity/event
+168,blue,grease,stays in,fat,oil,fry,lubricate,John Travolta,,entity/event,entity/event
+169,blue,guess,stays in,know,answer,question,what,who,,entity/event,entity/event
+170,blue,boomerang,stays in,return,throw,Australia,air,back,,entity/event,entity/event
+171,blue,bonfire,stays in,burn,camp,beach,rally,wood,,entity,entity
+4,purple,tickle,stays in,giggle,smile,laugh,kids,pink,,entity/event,entity/event
+,purple,pickpocket,stays in,thief,wallet,crowds,steal,crime,,entity/event,entity/event
+,purple,thirst,stays in,drink,dry,water,quench,liquid,,entity/event,entity/event
+,purple,teddy bear,stays in,toy,kids,cuddle,sleep,president,,entity,entity
+,purple,sunny,stays in,bright,warm,summer,cloudy,weather,,property,property
+,purple,scorpion,stays in,desert,sting,tail,poison,crawl,,entity,entity
+,purple,panda,stays in,bear,giant,zoo,bamboo,express,,entity,entity
+,purple,skunk,stays in,animal,stripe,stink,spray,smell,,entity,entity
+,purple,mountain,stays in,climb,range,molehill,skin,Rockies,,entity,entity
+,purple,pedicure,stays in,feet,toenails,file,polish,spa,,entity,entity
+,purple,surgery,stays in,hospital,doctor,operation,cut,scalpel,,entity,entity
+,purple,peacock,stays in,bird,tail,proud,NBC,feather,,entity,entity
+,purple,gossip,stays in,dirt,talk,office,rumors,grapevine,,entity/event,entity/event
+,purple,in-law,stays in,marriage,family,relative,spouse,parents,,entity,entity
+,purple,hiking,stays in,mountain,boots,gear,trip,trail,,entity/event,entity/event
+,purple,test,stays in,exam,quiz,SAT,school,standardized,,entity/event,entity/event
+,purple,mistake,stays in,error,blunder,make,wrong,right,,entity/event,entity/event
+,purple,lake,stays in,water,ocean,stream,great,front,,entity,entity
+,purple,ivory,stays in,white,tower,color,elephant,soap,,entity/property,other
+,purple,navy,stays in,ships,ocean,seals,sailor,military,,entity/property,other
+,purple,dance,stays in,lessons,recital,ballet,class,high school,,entity/event,entity/event
+,purple,snooze,stays in,nap,doze,sleep,tired,alarm,,entity/event,entity/event
+,purple,skyline,stays in,horizon,New York,city,buildings,Nissan,,entity,entity
+,purple,jury,stays in,trial,court,verdict,twelve,duty,,entity,entity
+,purple,luau,stays in,Hawaiian,party,feast,food,hula,,entity/event,entity
+,purple,pigeon,stays in,city,bird,park,messages,window,,entity,entity
+,purple,survive,stays in,alive,die,succeed,persevere,endure,,event,event
+,purple,ping-pong,stays in,game,ball,paddle,table,tennis,,entity,entity
+,purple,studio,stays in,art,music,dance,apartment,loft,,entity,entity
+,purple,mascara,stays in,eyelash,makeup,cosmetic,brush,apply,,entity,entity
+,purple,sneeze,stays in,dist,bless,cold,pepper,nose,,entity/event,entity/event
+,purple,question mark,stays in,punctuation,sentence,exclamation,period,ask,,entity,entity
+,purple,stale,stays in,old,moldy,dry,bread,fresh,,property,property
+,purple,underdog,stays in,longshot,favorite,odds,win,dark horse,,entity,entity
+,purple,lottery,stays in,ticket,money,numbers,win,buy,,entity,entity
+,purple,race horse,stays in,thoroughbred,Kentucky Derby,bet,track,jockey,,entity,entity
+,purple,jogging,stays in,running,exercise,workout,sneakers,marathon,,entity/event,entity/event
+,purple,slow,stays in,down,fast,move,snail,speed,,property,property
+,purple,pastry,stays in,danish,chef,donuts,dessert,eat,,entity,entity
+,purple,stew,stays in,food,crockpot,beef,flavor,mad,,entity/event,entity/event
+,purple,oyster,stays in,eat,pearl,shellfish,clam,raw,,entity,entity
+,purple,marshmallow,stays in,white,s'mores,toasted,peanut butter,fluffy,,entity,entity
+,purple,spring break,stays in,college,vacation,party,travel,Florida,,entity/event,entity
+,purple,plant,stays in,pot,water,vs. zombies,leaves,grow,,entity/event,entity/event
+,purple,fly,stays in,trap,swat,bug,sky,bird,,entity/event,entity/event
+,purple,paycheck,stays in,salary,wages,direct deposit,work,money,,entity,entity
+,purple,quack,stays in,doctor,duck,medicine,sound,noise,,entity/event,entity/event
+,purple,recipe,stays in,card,cook,instructions,food,ingredients,,entity,entity
+,purple,rainbow,stays in,over,colors,gold,sky,sundae,,entity/property,other
+,purple,mud,stays in,dirt,sling,wet,puddle,rain,,entity,entity
+,purple,giraffe,stays in,animal,neck,tail,long,spotted,,entity,entity
+,purple,scientist,stays in,study,laboratory,experiments,discovery,mad,,entity,entity
+,purple,sushi,stays in,fish,raw,Japan,bar,roll,,entity,entity
+,purple,scenery,stays in,view,beautiful,look,landscape,change,,entity,entity
+,purple,puppy,stays in,young,dog,playful,furry,kitten,,entity,entity
+,purple,dream,stays in,nightmare,sleep,goal,job,team,,entity/event,entity/event
+,purple,mix,stays in,blend,stir,combine,batter,together,,entity/event,entity/event
+,purple,buffalo,stays in,bison,animal,bill,west,sauce,,entity,other
+,purple,mouse,stays in,computer,rodent,wireless,pad,Mickey,,entity,entity
+,purple,fireplace,stays in,logs,chimney,brick,burn,wood,,entity,entity
+,purple,tavern,stays in,drink,inn,bar,pub,England,,entity,entity
+,purple,kangaroo,stays in,pouch,hop,animal,Australia,joey,,entity,entity
+,purple,rock,stays in,roll,band,music,diamond,stone,,entity/event,entity/event
+,purple,turnover,stays in,apple,car,flip,worker,change,,entity/event,entity/event
+,purple,fog,stays in,weather,rain,day,drive,see,,entity/event,entity/event
+,purple,paw,stays in,foot,dog,claw,toes,leg,,entity/event,entity/event
+,purple,shovel,stays in,tool,hole,dig,snow,dirt,,entity/event,entity/event
+,purple,raisin,stays in,grape,California,dried,snack,nuts,,entity,entity
+,purple,pizza,stays in,crust,slice,sauce,cheese,Domino's,,entity,entity
+,purple,saddle,stays in,horse,stirrups,leather,sit,ride,,entity/event,entity/event
+,purple,path,stays in,way,road,course,bicycle,career,,entity,entity
+,purple,tonsils,stays in,throat,operation,ice cream,remove,surgery,,entity,entity
+,purple,owl,stays in,bird,wise,hoot,night,tree,,entity,entity
+,purple,gingerbread,stays in,house,holiday,man,cake,molasses,,entity,entity
+,purple,lasagna,stays in,Italian,noodles,meat,eat,layers,,entity,entity
+,purple,finger,stays in,ring,point,hand,nail,toe,,entity/event,entity/event
+,purple,shaving cream,stays in,face,razor,foam,beard,white,,entity,entity
+,purple,hug,stays in,embrace,kiss,hold,warm,arms,,entity/event,entity/event
+,purple,point,stays in,tip,sharp,finger,power,end,,entity/event,entity/event
+,purple,silk,stays in,fabric,sheets,shirt,soft,worm,,entity/property,other
+,purple,sizzle,stays in,fry,hot,burn,sound,angry,,entity/event,entity/event
+,purple,tightrope,stays in,circus,acrobat,balance,walk,high wire,,entity,entity
+,purple,tart,stays in,pop,taste,sour,pastry,fruit,,entity/property,other
+,purple,monster,stays in,Frankenstein,horror,movie,creature,scary,,entity,entity
+,purple,note,stays in,letter,write,thank-you,musical,foot,,entity/event,entity/event
+,purple,grape,stays in,purple,wine,vineyard,Welch's,fruit,,entity,entity
+,purple,leftovers,stays in,reheat,yesterday,food,meal,save,,entity,entity
+,purple,recliner,stays in,chair,sofa,TV,den,La-Z-Boy,,entity,entity
+,purple,mattress,stays in,bed,sleep,firm,pillow,sheet,,entity,entity
+,purple,dummy,stays in,stupid,fake,ventriloquist,mannequin,wood,,entity/property,entity
+,purple,job,stays in,paycheck,employment,career,interview,work,,entity,entity
+,purple,lemon,stays in,citrus,sour,lime,fruit,defective,,entity,entity
+,purple,lily,stays in,flower,Easter,white,garden,scent,,entity,entity
+,purple,tickle,stays in,giggle,smile,laugh,kids,pink,,entity/event,entity/event
+,purple,intelligent,stays in,dumb,smart,education,brilliant,stupid,,property,property
+,purple,nail,stays in,polish,manicure,toe,hammer,finger,,entity/event,other
+,purple,picnic,stays in,basket,food,outside,eat,ants,,entity/event,entity/event
+,purple,boss,stays in,supervisor,manager,report,work,Bruce Springsteen,,entity/event,entity/event
+,purple,touchdown,stays in,points,football,score,end zone,Super Bowl,,entity/event,entity/event
+,purple,fumble,stays in,football,drop,search,catch,hands,,entity/event,entity/event
+,purple,jail,stays in,prison,cell,sentence,convict,bars,,entity/event,entity/event
+,purple,skill,stays in,talent,craft,aptitude,training,ability,,entity,entity
+,purple,temperature,stays in,fever,mouth,hot,baby,temperature,,entity,entity
+,purple,nozzle,stays in,faucet,shower,hose,water,adjust,,entity,entity
+,purple,negative,stays in,positive,minus,film,picture,attitude,,entity/property,other
+,purple,toll,stays in,bell,highway,booth,fee,pay,,entity/event,entity/event
+,purple,flip flops,stays in,summer,sandals,beach,casual,reverse,,entity,entity
+,purple,graduation,stays in,ceremony,school,cap,diploma,gown,,entity,entity
+,purple,mistletoe,stays in,hang,kiss,Christmas,green,under,,entity,entity
+,purple,panic,stays in,attack,fret,worry,calm,stress,,entity/event,entity/event
+,purple,purple,stays in,color,blue,violet,heart,rain,,property,property
+,purple,huddle,stays in,gather,football,group,play,together,,entity/event,entity/event
+,purple,prom,stays in,dance,dress,tux,date,queen,,entity/event,entity
+,purple,sulk,stays in,pout,mope,frown,kids,silent,,entity/event,event
+,purple,puke,stays in,vomit,barf,sick,throw up,nauseous,,entity/event,entity/event
+,purple,taxes,stays in,IRS,deduction,extension,credit,pay,,entity,entity
+,purple,stable,stays in,horse,relationship,steady,even,farm,,entity/property,other
+,purple,rain forest,stays in,Amazon,tropical,river,wildlife,trees,,entity,entity
+,purple,slap,stays in,strike,hit,smake,face,hand,,entity/event,entity/event
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+,purple,,stays in,,,,,,,,
+2,red,zebra,stays in,black,white,stripes,horse,zoo,,entity,
+,red,smear,stays in,lipstick,campaign,smudge,wipe,ink,,entity/event,
+,red,thug,stays in,brute,criminal,gang,violent,jail,,entity,
+,red,static,stays in,cling,electricity,tradition,stationary,constant,,entity/property,
+,red,tweezers,stays in,pluck,pull,eyebrow,splinter,squeeze,,entity,
+,red,trolley car,stays in,tracks,San Francisco,cable,train,street,,entity,
+,red,sword,stays in,knife,weapon,fencing,steel,blade,,entity,
+,red,tip,stays in,gratuity,restaurant,meal,bill,off,,entity/event,
+,red,outhouse,stays in,toilet,John,half-moon,bathroom,latrine,,entity,
+,red,suds,stays in,soap,foam,wash,bathroom,bubbles,,entity,
+,red,teapot,stays in,boil,water,coffee,kettle,whistle,,entity,
+,red,piano,stays in,keys,lesson,instrument,grand,music,,entity,
+,red,hamster,stays in,animal,rodent,vage,gerbil,wheel,,entity,
+,red,fudge,stays in,chocolate,ice cream,candy,hot,sundae,,entity/event,
+,red,tweet,stays in,bird,chirp,Twitter,140,news,,entity/event,
+,red,touch,stays in,hands,don't,feel,reach,down,,entity/event,
+,red,ransom,stays in,kidnap,money,hostage,pay,take,,entity/event,
+,red,volcano,stays in,eruption,lava,Iceland,Hawaii,flow,,entity,
+,red,smoke,stays in,detector,fire,stack,cigarette,light,,entity,
+,red,sunflower,stays in,yellow,oil,seeds,bloom,tall,,entity,
+,red,lighthouse,stays in,building,warning,coast,ships,fog,,entity,
+,red,vineyard,stays in,wine,tour,grapes,tasting,Napa Valley,,entity,
+,red,shake,stays in,ice cream,frappe,move,rattle,roll,,entity/event,
+,red,vitamin C,stays in,nutrition,colds,oranges,citrus,immunity,,entity,
+,red,valet,stays in,parking,drive,tip,car,restaurant,,entity,
+,red,marble,stays in,ball,game,collection,cake,swirl,,entity/event,
+,red,zebra,stays in,black,white,stripes,horse,zoo,,entity,
+,red,marriage,stays in,wedding,husband,wife,ceremony,vows,,entity,
+,red,wishing well,stays in,magic,coin,fairytale,water,grant,,entity,
+,red,keys,stays in,house,car,heart,lost,Florida,,entity,
+,red,poem,stays in,limerick,rhyme,verse,write,words,,entity,
+,red,pen,stays in,write,ball-point,felt-tip,pal,ink,,entity/event,
+,red,straw,stays in,sip,camel,hay,berry,scarecrow,,entity,
+,red,scarecrow,stays in,straw,The Wizard of Oz,garden,field,birds,,entity,
+,red,snorkel,stays in,swim,fins,underwater,ocean,scuba,,entity/event,
+,red,salt,stays in,sea,water,pepper,table,food,,entity/event,
+,red,wet,stays in,damp,dry,water,rain,drenched,,entity/event,
+,red,welcome,stays in,you're,thank you,greeting,warm,mat,,entity/event,
+,red,trophy,stays in,cup,prize,award,win,sports,,entity,
+,red,tired,stays in,fatigue,sleep,deprived,worn out,newborn,,property,
+,red,tombstone,stays in,grave,marker,funeral,cemetery,bury,,entity,
+,red,stars,stays in,sky,night,twinkle,celebrity,dancing,,entity,
+,red,pool,stays in,billiards,swimming,ground,water,dive,,entity/event,
+,red,stomach,stays in,belly,gut,flat,muscles,tummy,,entity/event,
+,red,hunk,stays in,attractive,gorgeous,handsome,guy,meat,,entity,
+,red,manicure,stays in,fingernail,polish,file,hand,women,,entity/event,
+,red,snowflake,stays in,winter,white,ice,big,catch,,entity,
+,red,trigger,stays in,gun,blast,horse,pull,shoot,,entity/event,
+,red,yesterday,stays in,past,before,hours,time,tomorrow,,entity,
+,red,shrimp,stays in,seafood,prawn,jumbo,shellfish,scampi,,entity,
+,red,shampoo,stays in,wash,hair,lather,suds,conditioner,,entity/event,
+,red,whisper,stays in,speak,soft,ear,secret,loud,,entity/event,
+,red,strapless,stays in,gown,shoulders,bathing suit,bare,dress,,property,
+,red,simple,stays in,plain,easy,difficult,hard,stupid,,property,
+,red,secret,stays in,agent,top,classified,tell,keep,,entity/property,
+,red,tape,stays in,duct,masking,cassette,video,scotch,,entity/event,
+,red,vote,stays in,elect,ballot,cast,November,candidate,,entity/event,
+,red,windmill,stays in,Holland,Dutch,building,blades,energy,,entity,
+,red,mad,stays in,insane,crazy,angry,furious,mood,,property,
+,red,yellow,stays in,color,red,banana,lemon,sundae,,property,
+,red,parsley,stays in,garnish,food,green,herb,spice,,entity,
+,red,snowman,stays in,Frosty,abominable,build,winter,make,,entity,
+,red,helmet,stays in,head,bicycle,protect,safety,injuries,,entity,
+,red,scoop,stays in,ice cream,cone,reporter,newspaper,story,,entity/event,
+,red,hiccup,stays in,bout,eat,drink,breath,air,,entity/event,
+,red,stiff,stays in,rigid,corpse,dead,drink,board,,property/event,
+,red,sleepwalk,stays in,awake,move,wander,pajamas,night,,entity/event,
+,red,yawn,stays in,tired,sleep,snooze,open,mouth,,entity/event,
+,red,surprise,stays in,astonish,party,expect,birthday,off-guard,,entity/event,
+,red,spy,stays in,CIA,traitor,secret,James Bond,undercover,,entity/event,
+,red,queen,stays in,Elizabeth,king,woman,royal,England,,entity,
+,red,teacher,stays in,school,learn,grade,student,professor,,entity,
+,red,tuxedo,stays in,formal,prom,jacket,black tie,wedding,,entity,
+,red,snore,stays in,sleep,disrupt,night,nose,noise,,entity/event,
+,red,stop,stays in,light,sign,it,by,red,,entity/event,
+,red,street,stays in,road,avenue,way,drive,cross,,entity,
+,red,stagger,stays in,sway,hesitate,walk,unsteady,straight,,entity/event,
+,red,yo-yo,stays in,toy,string,up,down,spin,,entity/event,
+,red,plumber,stays in,leak,pipes,toilet,sink,fix,,entity,
+,red,waiter,stays in,restaurant,waitress,serve,tip,eat,,entity,
+,red,sunburn,stays in,red,skin,lotion,tan,vacation,,entity,
+,red,pin,stays in,needle,point,down,safety,brooch,,entity/event,
+,red,twins,stays in,babies,two,identical,fraternal,Minnesota,,entity,
+,red,karaoke,stays in,sing,along,words,duet,pub,,entity/event,
+,red,watch,stays in,wrist,clock,time,wear,look,,entity/event,
+,red,midnight,stays in,twelve o' clock,curfew,noon,time,strike,,entity/event,
+,red,wrinkle,stays in,crease,line,old,skin,face,,entity/event,
+,red,wine,stays in,red,white,cocktail,glass,cheese,,entity,
+,red,sweat,stays in,perspire,hot,exercise,wet,water,,entity/event,
+,red,truffle,stays in,chocolate,mushroom,white,black,oil,,entity,
+,red,quintuplets,stays in,babies,five,birth,twins,multiple,,entity,
+,red,tag,stays in,price,hash,sale,label,along,,entity/event,
+,red,pound,stays in,weight,currency,ounce,dog,calories,,entity/event,
+,red,watermelon,stays in,fruit,seeds,picnics,pink,green,,entity,
+,red,skateboard,stays in,wheels,roll,park,trucks,Tony Hawk,,entity/event,
+,red,pose,stays in,photograph,model,picture,stand,still,,entity/event,
+,red,knife,stays in,cutlery,sharp,spoon,fork,set,,entity,
+,red,snowboard,stays in,ski,snow,winter,Shaun White,halfpipe,,entity/event,
+,red,tent,stays in,camping,woods,sleep,outside,circus,,entity/event,
+,red,jersey,stays in,new,state,shirt,wear,shore,,entity,
+,red,peak,stays in,summit,mountain,point,career,shape,,entity/event,
+,red,oatmeal,stays in,cereal,breakfast,cookies,Quaker,hot,,entity,
+,red,polo,stays in,sport,horses,mallet,shirt,royalty,,entity,
+,red,sweet,stays in,sugary,tea,nice,sour,sixteen,,entity/property,
+,red,waterfall,stays in,Niagra,cliff,river,over,bridge,,entity,
+,red,theme park,stays in,rides,entertainment,family,roller coaster,Disney,,entity,
+,red,mirror,stays in,wall,see,reflection,looking-glass,rear view,,entity/event,
+,red,jockey,stays in,ride,horse,race,saddle,track,,entity/event,
+,red,stress,stays in,nervous,tense,pressure,anxiety,work,,entity/event,
+,red,tropical,stays in,climate,weather,storm,vacation,flowers,,property,
+,red,spatula,stays in,cook,kitchen,flip,food,utensil,,entity,
+,red,wallet,stays in,billfold,purse,money,credit card,pocket,,entity,
+,red,waffle,stays in,Belgian,iron,strawberries,breakfast,syrup,,entity/event,
+,red,snack,stays in,hungry,food,fruit,time,healthy,,entity/event,
+,red,strategy,stays in,plan,business,tactics,think,plot,,entity,
+,red,turkey,stays in,gobble,Thanksgiving,stuffing,drumstick,bird,,entity,
+,red,trunk,stays in,elephant,car,suitcase,tree,spare tire,,entity,
+,red,violin,stays in,music,instrument,string,bow,chin,,entity,
+,red,stunt,stays in,extreme,car,risk,man,danger,,entity/event,
+3,yellow,journey,stays in,trip,travel,adventure,go,band,,entity/event,
+172,yellow,geometry,stays in,angle,math,shape,school,algebra,,entity,
+173,yellow,dimples,stays in,face,smile,cheek,cute,baby,,entity,
+174,yellow,snob,stays in,better,rich,uppity,nose,conceited,,entity,
+175,yellow,paint,stays in,color,brush,wall,house,artist,,entity/event,
+176,yellow,blow,stays in,wind,air,mouth,off,bubble,,entity/event,
+177,yellow,hypnosis,stays in,trance,sleep,watch,relax,subconscious,,entity,
+178,yellow,lunch,stays in,meal,break,noon,eat,breakfast,,entity/event,
+179,yellow,honesty,stays in,truth,lie,integrity,honor,trustworthy,,entity,
+180,yellow,quit,stays in,resign,stop,give up,job,fire,,event,
+181,yellow,milk,stays in,drinks,cow,gallon,dairy,got,,entity,
+182,yellow,brandy,stays in,booze,drink,cocktail,liquor,alcohol,,entity,
+183,yellow,museum,stays in,art,paintings,exhibits,night,collection,,entity,
+184,yellow,canoe,stays in,boat,paddle,kayak,water,dugout,,entity,
+185,yellow,organic,stays in,food,natural,cotton,basic,pesticides,,property,
+186,yellow,diamond,stays in,marriage,ring,engagement,rock,carat,,entity,
+187,yellow,butter,stays in,margarine,spread,dairy,bake,popcorn,,entity/event,
+188,yellow,lipstick,stays in,mouth,makeup,cosmetic,red,tube,,entity,
+189,yellow,bubble gum,stays in,chew,baseball card,bazooka,blow,balls,,entity,
+190,yellow,infinity,stays in,limitless,eternity,boundless,beyond,forever,,entity,
+191,yellow,cast,stays in,actor,fishing,broken,plaster,bone,,entity/event,
+192,yellow,soup,stays in,tomato,chicken,salad,spoon,homemade,,entity,
+193,yellow,crab,stays in,seafood,shellfish,alaskan,claws,cakes,,entity,
+194,yellow,park,stays in,recreation,garage,cards,tree,Yellowstone,,entity/event,
+195,yellow,tunnel,stays in,dirt,love,cars,mountains,hole,,entity,
+196,yellow,butterfly,stays in,wings,moth,caterpillar,cocoon,net,,entity,
+197,yellow,detective,stays in,investigate,crime,clues,private eye,Sherlock Holmes,,entity,
+198,yellow,scale,stays in,fish,weigh,diet,climb,pounds,,entity/event,
+199,yellow,crayon,stays in,wax,children,draw,kids,coloring book,,entity,
+200,yellow,artist,stays in,painter,sculptor,canvas,studio,easel,,entity,
+201,yellow,flamingo,stays in,pink,bird,lawn,long,legs,,entity,
+202,yellow,duvet,stays in,bed,blanket,cover,feathers,quilt,,entity,
+203,yellow,sauna,stays in,steam,room,hot,sweat,spa,,entity,
+204,yellow,deck,stays in,ship,cards,hit,halls,porch,,entity/event,
+205,yellow,garage,stays in,car,park,house,band,door,,entity,
+206,yellow,fall,stays in,season,spring,winter,down,leaves,,entity/event,
+207,yellow,coincidence,stays in,unexpected,occurs,happen,same,chance,,entity,
+208,yellow,feather,stays in,wing,pillow,fly,bird,light,,entity/event,
+209,yellow,chill,stays in,cold,ice,night,air,bone,,entity/event,
+210,yellow,field,stays in,grass,green,wildflowers,run,picnic,,entity,
+211,yellow,ice,stays in,cube,water,drink,winter,tea,,entity/event,
+212,yellow,jump,stays in,rope,off,up,down,high,,entity/event,
+213,yellow,globe,stays in,world,map,ball,round,earth,,entity,
+214,yellow,cupcake,stays in,frosting,party,bake,foil,wars,,entity,
+215,yellow,spider,stays in,eight,legs,insect,black widow,web,,entity,
+216,yellow,desert,stays in,sahara,cactus,hot,dry,sand,,entity/event,
+217,yellow,forest,stays in,trees,national,fires,wood,see,,entity,
+219,yellow,customer,stays in,store,buy,sell,pay,customer,,entity,
+220,yellow,explode,stays in,blow,detonate,burst,dynamite,bomb,,event,
+221,yellow,helicopter,stays in,blade,ride,chopper,fly,pad,,entity,
+222,yellow,mop,stays in,sweep,bucket,clean,floor,spill,,entity/event,
+223,yellow,pat,stays in,tap,back,down,praise,name,,entity/event,
+224,yellow,ghost,stays in,Casper,spirit,Halloween,sheet,haunted,,entity/event,
+225,yellow,island,stays in,adventure,ocean,tropical,breeze,Caribbean,,entity,
+226,yellow,stripes,stays in,horizontal,vertical,lines,flag,stars,,entity,
+227,yellow,money,stays in,dollars,cents,buy,spend,cash,,entity,
+228,yellow,swamp,stays in,water,mud,marsh,boat,alligator,,entity,
+229,yellow,quick,stays in,fast,express,rapid,hasty,swift,,property,
+230,yellow,fake,stays in,fraud,con,real,phony,counterfeit,,event/property,
+231,yellow,pretzel,stays in,twisted,salty,snack,dough,mustard,,entity,
+,yellow,ancient,stays in,old,history,past,time,Rome,,property,
+,yellow,heart,stays in,beat,break,attack,burn,love,,entity,
+,yellow,license,stays in,driver,permit,tag,plate,poetic,,entity/event,
+,yellow,garlic,stays in,smell,cook,press,pasta,breath,,entity,
+,yellow,moon,stays in,night,sky,sun,full,Neil Artmstrong,,entity/event,
+,yellow,germ,stays in,disease,spread,virus,bacteria,cold,,entity,
+,yellow,jackpot,stays in,win,hit,gamble,money,lottery,,entity,
+,yellow,cobweb,stays in,spider,trap,hang,spin,insect,,entity,
+,yellow,engine,stays in,motor,cards,light,train,hood,,entity,
+,yellow,chopsticks,stays in,wood,piano,utensil,eat,fork,,entity,
+,yellow,crash,stays in,stock market,accident,car,party,collision,,entity/event,
+,yellow,geyser,stays in,Old Faithful,hot,water,shoot,Yellowstone,,entity,
+,yellow,debut,stays in,premiere,introduction,first,society,perform,,entity/event,
+,yellow,refrigerator,stays in,door,freezer,cold,food,raid,,entity,
+,yellow,confetti,stays in,paper,scraps,throw,wedding,celebration,,entity,
+,yellow,curfew,stays in,date,teenagers,time,rules,home,,entity,
+,yellow,earth,stays in,globe,world,planet,ground,mother,,entity,
+,yellow,belly button,stays in,navel,tummy,ring,cord,lint,,entity,
+,yellow,chandelier,stays in,light,ceiling,fixture,crystal,dining,,entity,
+,yellow,bulb,stays in,light,glass,watt,tulip,plant,,entity,
+,yellow,decipher,stays in,decode,interpret,secret,read,figure,,event,
+,yellow,score,stays in,total,music,goal,average,test,,entity/event,
+,yellow,newspaper,stays in,print,press,daily,reporters,read,,entity,
+,yellow,knot,stays in,tie,rope,loop,shoelace,tangle,,entity/event,
+,yellow,rhyme,stays in,poem,sound,words,alike,nursery,,entity/event,
+,yellow,costume,stays in,Halloween,scary,play,stage,party,,entity/event,
+,yellow,parrot,stays in,bird,pet,mimic,speech,imitate,,entity,
+,yellow,nest,stays in,bird,eggs,tree,home,build,,entity/event,
+,yellow,kite,stays in,fly,wind,string,park,sky,,entity,
+,yellow,band,stays in,group,rubber,school,orchestra,wedding,,entity/event,
+,yellow,lizard,stays in,snake,reptile,salamander,chameleon,alligator,,entity,
+,yellow,rug,stays in,floor,carpet,oriental,toupee,hairpiece,,entity,
+,yellow,gravity,stays in,spave,force,earth,weight,physics,,entity,
+,yellow,forecast,stays in,weather,future,radio,prediction,news,,entity/event,
+,yellow,diner,stays in,eat,greasy spoon,restaurant,truck stop,50s,,entity,
+,yellow,doll,stays in,house,baby,toy,girl,paper,,entity,
+,yellow,circle,stays in,shape,round,ring,friends,full,,entity/event,
+,yellow,invitation,stays in,wedding,RSVP,mail,party,friend,,entity,
+,yellow,fajita,stays in,Mexican,wrap,cheese,peppers,salsa,,entity,
+,yellow,gallery,stays in,art,museum,collections,shower,paintings,,entity,
+,yellow,insomnia,stays in,sleep,toss,restless,bed,night,,entity,
+,yellow,couch,stays in,potato,sofa,sit still,furniture,leather,,entity,
+,yellow,reindeer,stays in,Christmas,Santa,sleigh,Rudolph,red-nosed,,entity,
+,yellow,break,stays in,snap,fractire,separate,rest,lucky,,entity/event,
+,yellow,healthy,stays in,well,fit,exercise,feel,shape,,property,
+,yellow,coach,stays in,sports,team,leader,improve,teach,,entity/event,
+,yellow,float,stays in,swim,raft,parade,root beer,water,,entity/event,
+,yellow,shuffle,stays in,cards,feet,dance,walk,board,,entity/event,
+,yellow,heist,stays in,robber,thief,steal,art,Gene Hackman,,entity/event,
+,yellow,nutcracker,stays in,ballet,open,suite,Christmas,dance,,entity,
+,yellow,fan,stays in,ceiling,air conditioner,cool,cheer,mail,,entity/event,
+,yellow,honey,stays in,bees,sweetheart,bear,shrunk,hive,,entity,
+,yellow,pomegranate,stays in,fruit,tree,health,juice,red,,entity,
+,yellow,clumsy,stays in,awkward,uncoordinated,drop,oaf,klutz,,property,
+,yellow,sip,stays in,drink,taste,wine,take,straw,,entity/event,
+,yellow,cream,stays in,coffee,tea,milk,ice,whipped,,entity/event,
+,yellow,brown,stays in,color,beige,black,golden,sugar,,property,
+,yellow,map,stays in,find,drive,lost,route,road,,entity/event,
+7,red,windfall,too difficult,money,unexpected,good,gift,fortune,,,
+8,yellow,decathalon,too difficult,athletic,ten,track and field,olympic,sports,,,
+9,yellow,corned beef hash,too difficult,eat,can,eggs,chopped,meat,,,
+12,purple,mogul,too difficult,ski,snow,jump,powerful,tycoon,,,
+18,purple,speed dating,too difficult,fast,single,tables,many,time,,,
+22,yellow,caboose,too difficult,train,locomotive,end,last,red,,,
+29,blue,black tie,too difficult,formal,tuxedo,wedding,afffair,collar,,,
+30,blue,banister,too difficult,stairway,railing,steps,hold,fall,,,
+31,blue,barracuda,too difficult,fish,bite,predator,car,greed,,,
+32,blue,javelin,too difficult,spear,throw,Olympics,track and field,event,,,
+33,red,wiffle ball,too difficult,bat,game,yard,play,base,I'm also not sure if this is a proper noun?,,
+34,blue,free range,too difficult,cageless,eggs,animals,hens,humane,,,
+40,blue,chalet,too difficult,Swiss,mountains,Alps,ski lodge,house,,,
+41,purple,coat of arms,too difficult,knight,family,crest,shield,emblem,,,
+42,purple,rigor mortis,too difficult,body,dead,stiff,corpse,rigid,"When I was playing this, it just seemed like no one even knew what rigor mortis was",,
+51,yellow,clubhouse,too difficult,building,members,meet,golf,belong,,,
+52,purple,pastrami,too difficult,deli,rye,meat,corned beef,sandwich,,,
+53,purple,face-lift,too difficult,wrinkles,younger,plastic surgery,operation,cosmetic,,,

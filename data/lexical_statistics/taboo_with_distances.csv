@@ -1,0 +1,472 @@
+Item #,Deck color,Word to be explained,taboo1,taboo2,taboo3,taboo4,taboo5,target,avg_distance_to_taboo,counts_for_taboo_obs
+1,blue,extreme,Sports,Athlete,Temperature,Radical,difficulty,extreme,0.708505583,5
+54,blue,ambassador,diplomat,United Nations,country,embassy,foreign,ambassador,0.513982315,4
+55,blue,brain,smart,head,mind,skull,cranium,brain,0.699370873,5
+56,blue,farm,land,cow,milk,stand,vegetable,farm,0.656566474,5
+57,blue,camp,fire,woods,summer,tent,backpack,camp,0.706965296,5
+58,blue,lifeguard,pool,beach,sim,drown,save,lifeguard,0.856969701,5
+59,blue,luggage,baggage,suitcase,travel,vacation,pack,luggage,0.564354169,5
+60,blue,hose,water,rubber,stockings,pant,sprinkler,hose,0.666667989,5
+61,blue,aspirin,pill,headache,medicine,dosage,pharmacy,aspirin,0.63590073,5
+62,blue,dead end,street,exit,road,job,cul-de-sac,dead end,,0
+63,blue,dove,bird,peace,pigeon,white,soap,dove,0.762207383,5
+64,blue,dare,truth,challenge,courage,bold,provoke,dare,0.715394771,5
+66,blue,amnesia,forget,memory,remmeber,head,bump,amnesia,0.8913738,4
+67,blue,caricature,cartoon,drawing,artist,portrait,distort,caricature,0.643947682,5
+68,blue,call,phone,dial,back,answer,talk,call,0.512569195,5
+69,blue,dribble,drool,saliva,spit,basketball,bounce,dribble,0.800511894,5
+70,blue,blush,red,cheeks,makeup,embarrass,face,blush,0.805153924,5
+71,blue,dust,dirt,vacuum,collect,clean,bunnies,dust,0.64255929,5
+72,blue,flashlight,batteries,beam,shine,dark,hand,flashlight,0.681154913,5
+73,blue,blister,sunburn,bubble,shoes,skin,rub,blister,0.798676184,5
+74,blue,battery,car,charge,size,jump,cell,battery,0.716629249,5
+75,blue,bowling alley,pins,shoes,spare,strike,balls,bowling alley,,0
+76,blue,bald,head,hair,spot,rug,toupee,bald,0.779488912,5
+77,blue,boardwalk,Atlantic City,beach,pier,Monopoly,Park Place,boardwalk,0.688338898,3
+78,blue,blast,dynamite,explosion,party,loud,off,blast,0.600194094,5
+79,blue,pyramid,Egypt,tombs,pharaohs,King Tut,buried,pyramid,0.783329846,4
+80,blue,applause,cheers,clapping,ovation,perform,hand,applause,0.538613065,5
+81,blue,deal,sale,day,cards,breaker,bargain,deal,0.709880024,5
+82,blue,champagne,wine,bubbles,cork,toast,celebrate,champagne,0.59924956,5
+83,blue,doctor,scrubs,medical,hospital,nurse,surgeon,doctor,0.481757346,5
+84,blue,mansion,haunted,celebrity,estate,live,rich,mansion,0.712403014,5
+85,blue,bunny,rabbit,pet,ears,animal,Easter,bunny,0.675490549,5
+86,blue,oil,price,well,drill,car,olive,oil,0.683865491,5
+87,blue,book,paperback,pages,novel,library,read,book,0.444672227,5
+88,blue,army,navy,soldier,draft,service,military,army,0.531206846,5
+89,blue,bayou,water,swamp,Louisiana,delta,south,bayou,0.781526124,5
+90,blue,drive,car,highway,license,scenic,way,drive,0.645104173,5
+91,blue,basement,cellar,apartment,house,finished,downstairs,basement,0.526785582,5
+92,blue,daydream,think,sleep,fantasize,bored,mind,daydream,0.868193994,5
+93,blue,polar bear,white,zoo,snow,cold,brown,polar bear,,0
+94,blue,balloon,helium,blow,candles,pop,birthday,balloon,0.791107771,5
+95,blue,crutches,broken,leg,cane,cast,walk,crutches,0.714695749,5
+96,blue,dip,vegetable,chip,swim,stick,oil,dip,0.730673924,5
+97,blue,ladybug,insect,beetle,spotted,red,good luck,ladybug,0.829934732,4
+98,blue,bridge,Brooklyn,Golden Gate,water,over,cross,bridge,0.702693943,4
+99,blue,fame,celebrity,fleeting,fame,hall,glory,fame,0.444182873,5
+100,blue,freshen,up,renew,revive,clean,cleanse,freshen,0.777780548,5
+101,blue,immortal,die,live,forever,eternity,youth,immortal,0.759734339,5
+102,blue,batter,baseball,hitter,pitcher,cake,mix,batter,0.587367147,5
+103,blue,shadow,sunlight,shade,eye,casts,meat,shadow,0.726586471,5
+104,blue,design,interior,graphic,artist,fashion,trends,design,0.653101355,5
+105,blue,acne,zits,teenager,pimple,face,Clearasil,acne,0.796104749,5
+106,blue,cologne,perfume,scent,smell,aftershave,fragrance,cologne,0.792891386,5
+107,blue,adhesive,glue,sticky,paste,tape,together,adhesive,0.629467167,5
+108,blue,chef,kitchen,cook,top,restaurant,celebrity,chef,0.55744918,5
+109,blue,headline,news,act,performer,title,star,headline,0.721685779,5
+110,blue,flames,fire,red,orange,down,Calgary,flames,0.640401942,5
+111,blue,defrost,ice,freezer,thaw,melt,refrigerator,defrost,0.705554965,5
+112,blue,career,profession,job,vocation,living,work,career,0.668892998,5
+113,blue,gallon,measurement,quart,gasoline,pint,milk,gallon,0.651314521,5
+114,blue,burp,belch,baby,gas,air,eat,burp,0.916558259,5
+115,blue,claustrophobia,fear,close,feeling,trapped,panic,claustrophobia,0.886685339,5
+116,blue,chocolate,cocoa,bar,vanilla,candy bar,chip,chocolate,0.579320326,4
+117,blue,beret,hat,French,cap,green,artist,beret,0.792481993,5
+118,blue,elf,fairy,Will Ferrell,little,Santa,Keebler,elf,0.857698226,4
+119,blue,clown,circus,jester,birthday party,funny,costume,clown,0.583971478,4
+120,blue,motorcycle,leather,helmet,bike,ride,Harley-Davidson,motorcycle,0.565910649,5
+121,blue,breeze,ocean,warm,isalnd,easy,sweater,breeze,0.712838653,4
+122,blue,cheat,scam,fraud,swindle,dupe,games,cheat,0.755578488,5
+123,blue,cartoon,comics,animated,draw,television,character,cartoon,0.545363948,5
+124,blue,bath,tub,water,relax,shower,bubble,bath,0.621887812,5
+125,blue,academy,naval,awards,school,police,Oscars,academy,0.582555169,5
+126,blue,airport,travel,planes,security,takeoff,fly,airport,0.588944846,5
+127,blue,blink,eye,lid,flash,red,light,blink,0.832111299,5
+128,blue,postcard,mail,picture,stamp,vacation,send,postcard,0.680229324,5
+130,blue,cheer,yell,support,toast,fans,hurrah,cheer,0.694095868,5
+131,blue,downtown,go,city,shopping,urban,Main Street,downtown,0.55661042,4
+132,blue,carpet,floor,rug,hardwood,vacuum,shag,carpet,0.647844985,5
+133,blue,beach,seashore,sand,waves,shells,ocean,beach,0.665987921,5
+134,blue,cowboy,hat,horse,west,cattle,Dallas,cowboy,0.724078281,5
+135,blue,honeymoon,marriage,newlyweds,Niagra Falls,trip,vacation,honeymoon,0.544920161,4
+136,blue,handcuffs,wrist,police,jail,arrest,criminal,handcuffs,0.745803982,5
+137,blue,crawl,baby,walk,learn,knees,spider,crawl,0.730371895,5
+138,blue,bargain,price,deal,wholesale,shops,haggle,bargain,0.715801713,5
+139,blue,barn,farm,horse,animals,door,hay,barn,0.652242225,5
+140,blue,fingerprint,hand,unique,evidence,crime,dust,fingerprint,0.813128681,5
+141,blue,bench,sit,play,judge,seat,park,bench,0.675521541,5
+142,blue,gasp,sound,shock,surprise,breath,noise,gasp,0.771589865,5
+143,blue,cactus,grow,needles,desert,plant,sharp,cactus,0.782727542,5
+144,blue,antique,old,ancient,dated,collector,furniture,antique,0.620778126,5
+145,blue,battle,war,fight,combat,army,conflict,battle,0.486685181,5
+146,blue,bikini,swimsuit,two-piece,beach,wear,bathing,bikini,0.631985211,5
+147,blue,bacon,pig,eat,breakfast,sausage,eggs,bacon,0.646248233,5
+148,blue,bag,paper,garbage,brown,purse,plastic,bag,0.572313213,5
+149,blue,pitch,toss,throw,baseball,sales,horseshoes,pitch,0.718622634,5
+150,blue,bartender,drinks,restaurant,alcohol,mixes,cocktail,bartender,0.732084642,5
+151,blue,calories,count,burn,low,food,weight,calories,0.732069132,5
+152,blue,dorm,college,student,home,campus,room,dorm,0.609757605,5
+153,blue,atlas,map,book,chart,world,globe,atlas,0.864981864,5
+154,blue,cotton,white,ball,clothes,material,organic,cotton,0.744814566,5
+155,blue,busboy,restaurant,waiter,dishes,clears,tables,busboy,0.756907903,5
+156,blue,bakery,bread,cake,pastry,rolls,fresh,bakery,0.675124934,5
+157,blue,appendix,index,book,emergency,scar,stomach,appendix,0.824640941,5
+158,blue,eyelash,hair,mascara,lid,curler,comb,eyelash,0.827980804,5
+159,blue,ache,tooth,head,pain,sore,back,ache,0.750955096,5
+160,blue,cottage,country,cheese,house,cabin,little,cottage,0.714991289,5
+161,blue,bait,worms,fishing,hook,lure,catch,bait,0.581282133,5
+162,blue,cherry,fruit,red,tree,blossoms,sundae,cherry,0.607176429,5
+163,blue,backpack,school,student,books,hike,bag,backpack,0.762831134,5
+164,blue,angel,heaven,devil,halo,wings,sweet,angel,0.733109367,5
+165,blue,cockroach,bug,city,pest,kitchen,insect,cockroach,0.788860667,5
+166,blue,bloom,flowers,spring,annual,plant,flourish,bloom,0.693004364,5
+167,blue,fidget,move,restless,sit still, impatient,hair,fidget,0.960842005,3
+168,blue,grease,fat,oil,fry,lubricate,John Travolta,grease,0.707919329,4
+169,blue,guess,know,answer,question,what,who,guess,0.465651178,5
+170,blue,boomerang,return,throw,Australia,air,back,boomerang,0.927249826,5
+171,blue,bonfire,burn,camp,beach,rally,wood,bonfire,0.883269236,5
+4,purple,tickle,giggle,smile,laugh,kids,pink,tickle,0.749070758,5
+,purple,pickpocket,thief,wallet,crowds,steal,crime,pickpocket,0.803096859,5
+,purple,thirst,drink,dry,water,quench,liquid,thirst,0.717666815,5
+,purple,teddy bear,toy,kids,cuddle,sleep,president,teddy bear,,0
+,purple,sunny,bright,warm,summer,cloudy,weather,sunny,0.50483225,5
+,purple,scorpion,desert,sting,tail,poison,crawl,scorpion,0.731411992,5
+,purple,panda,bear,giant,zoo,bamboo,express,panda,0.687182198,5
+,purple,skunk,animal,stripe,stink,spray,smell,skunk,0.800053957,5
+,purple,mountain,climb,range,molehill,skin,Rockies,mountain,0.736107978,5
+,purple,pedicure,feet,toenails,file,polish,spa,pedicure,0.847950652,5
+,purple,surgery,hospital,doctor,operation,cut,scalpel,surgery,0.638730091,5
+,purple,peacock,bird,tail,proud,NBC,feather,peacock,0.736876097,5
+,purple,gossip,dirt,talk,office,rumors,grapevine,gossip,0.719304437,5
+,purple,in-law,marriage,family,relative,spouse,parents,in-law,0.901764366,5
+,purple,hiking,mountain,boots,gear,trip,trail,hiking,0.612625122,5
+,purple,test,exam,quiz,SAT,school,standardized,test,0.690054715,5
+,purple,mistake,error,blunder,make,wrong,right,mistake,0.459122002,5
+,purple,lake,water,ocean,stream,great,front,lake,0.65626483,5
+,purple,ivory,white,tower,color,elephant,soap,ivory,0.781482351,5
+,purple,navy,ships,ocean,seals,sailor,military,navy,0.560778809,5
+,purple,dance,lessons,recital,ballet,class,high school,dance,0.59304177,4
+,purple,snooze,nap,doze,sleep,tired,alarm,snooze,0.739029588,5
+,purple,skyline,horizon,New York,city,buildings,Nissan,skyline,0.712041922,4
+,purple,jury,trial,court,verdict,twelve,duty,jury,0.537422752,5
+,purple,luau,Hawaiian,party,feast,food,hula,luau,0.83505509,5
+,purple,pigeon,city,bird,park,messages,window,pigeon,0.899676579,5
+,purple,survive,alive,die,succeed,persevere,endure,survive,0.586237496,5
+,purple,ping-pong,game,ball,paddle,table,tennis,ping-pong,0.858605162,5
+,purple,studio,art,music,dance,apartment,loft,studio,0.595385927,5
+,purple,mascara,eyelash,makeup,cosmetic,brush,apply,mascara,0.822785035,5
+,purple,sneeze,dist,bless,cold,pepper,nose,sneeze,0.885747831,5
+,purple,question mark,punctuation,sentence,exclamation,period,ask,question mark,,0
+,purple,stale,old,moldy,dry,bread,fresh,stale,0.697374564,5
+,purple,underdog,longshot,favorite,odds,win,dark horse,underdog,0.601959825,4
+,purple,lottery,ticket,money,numbers,win,buy,lottery,0.684403259,5
+,purple,race horse,thoroughbred,Kentucky Derby,bet,track,jockey,race horse,,0
+,purple,jogging,running,exercise,workout,sneakers,marathon,jogging,0.67799533,5
+,purple,slow,down,fast,move,snail,speed,slow,0.544913721,5
+,purple,pastry,danish,chef,donuts,dessert,eat,pastry,0.654965344,5
+,purple,stew,food,crockpot,beef,flavor,mad,stew,0.705717602,5
+,purple,oyster,eat,pearl,shellfish,clam,raw,oyster,0.639325422,5
+,purple,marshmallow,white,s'mores,toasted,peanut butter,fluffy,marshmallow,0.694690765,4
+,purple,spring break,college,vacation,party,travel,Florida,spring break,,0
+,purple,plant,pot,water,vs. zombies,leaves,grow,plant,0.698605489,4
+,purple,fly,trap,swat,bug,sky,bird,fly,0.784259368,5
+,purple,paycheck,salary,wages,direct deposit,work,money,paycheck,0.66412643,4
+,purple,quack,doctor,duck,medicine,sound,noise,quack,0.829044457,5
+,purple,recipe,card,cook,instructions,food,ingredients,recipe,0.656626889,5
+,purple,rainbow,over,colors,gold,sky,sundae,rainbow,0.790093782,5
+,purple,mud,dirt,sling,wet,puddle,rain,mud,0.580840713,5
+,purple,giraffe,animal,neck,tail,long,spotted,giraffe,0.83964169,5
+,purple,scientist,study,laboratory,experiments,discovery,mad,scientist,0.625637734,5
+,purple,sushi,fish,raw,Japan,bar,roll,sushi,0.696498054,5
+,purple,scenery,view,beautiful,look,landscape,change,scenery,0.630975863,5
+,purple,puppy,young,dog,playful,furry,kitten,puppy,0.605522478,5
+,purple,dream,nightmare,sleep,goal,job,team,dream,0.655085033,5
+,purple,mix,blend,stir,combine,batter,together,mix,0.498660415,5
+,purple,buffalo,bison,animal,bill,west,sauce,buffalo,0.771795833,5
+,purple,mouse,computer,rodent,wireless,pad,Mickey,mouse,0.623716295,5
+,purple,fireplace,logs,chimney,brick,burn,wood,fireplace,0.605837461,5
+,purple,tavern,drink,inn,bar,pub,England,tavern,0.611168483,5
+,purple,kangaroo,pouch,hop,animal,Australia,joey,kangaroo,0.822636834,5
+,purple,rock,roll,band,music,diamond,stone,rock,0.532563639,5
+,purple,turnover,apple,car,flip,worker,change,turnover,0.911786292,5
+,purple,fog,weather,rain,day,drive,see,fog,0.711588018,5
+,purple,paw,foot,dog,claw,toes,leg,paw,0.70646559,5
+,purple,shovel,tool,hole,dig,snow,dirt,shovel,0.68480593,5
+,purple,raisin,grape,California,dried,snack,nuts,raisin,0.738999933,5
+,purple,pizza,crust,slice,sauce,cheese,Domino's,pizza,0.56529545,4
+,purple,saddle,horse,stirrups,leather,sit,ride,saddle,0.662949169,5
+,purple,path,way,road,course,bicycle,career,path,0.622442034,5
+,purple,tonsils,throat,operation,ice cream,remove,surgery,tonsils,0.785884887,4
+,purple,owl,bird,wise,hoot,night,tree,owl,0.752888596,5
+,purple,gingerbread,house,holiday,man,cake,molasses,gingerbread,0.740033448,5
+,purple,lasagna,Italian,noodles,meat,eat,layers,lasagna,0.741670573,5
+,purple,finger,ring,point,hand,nail,toe,finger,0.601183635,5
+,purple,shaving cream,face,razor,foam,beard,white,shaving cream,,0
+,purple,hug,embrace,kiss,hold,warm,arms,hug,0.681138411,5
+,purple,point,tip,sharp,finger,power,end,point,0.641655511,5
+,purple,silk,fabric,sheets,shirt,soft,worm,silk,0.668622252,5
+,purple,sizzle,fry,hot,burn,sound,angry,sizzle,0.879360478,5
+,purple,tightrope,circus,acrobat,balance,walk,high wire,tightrope,0.733025789,4
+,purple,tart,pop,taste,sour,pastry,fruit,tart,0.606009442,5
+,purple,monster,Frankenstein,horror,movie,creature,scary,monster,0.532919562,5
+,purple,note,letter,write,thank-you,musical,foot,note,0.74536436,5
+,purple,grape,purple,wine,vineyard,Welch's,fruit,grape,0.51781974,4
+,purple,leftovers,reheat,yesterday,food,meal,save,leftovers,0.744722551,5
+,purple,recliner,chair,sofa,TV,den,La-Z-Boy,recliner,0.776786716,5
+,purple,mattress,bed,sleep,firm,pillow,sheet,mattress,0.64396306,5
+,purple,dummy,stupid,fake,ventriloquist,mannequin,wood,dummy,0.774274108,5
+,purple,job,paycheck,employment,career,interview,work,job,0.538228488,5
+,purple,lemon,citrus,sour,lime,fruit,defective,lemon,0.580155573,5
+,purple,lily,flower,Easter,white,garden,scent,lily,0.742994556,5
+,purple,intelligent,dumb,smart,education,brilliant,stupid,intelligent,0.608125708,5
+,purple,nail,polish,manicure,toe,hammer,finger,nail,0.666399378,5
+,purple,picnic,basket,food,outside,eat,ants,picnic,0.773914611,5
+,purple,boss,supervisor,manager,report,work,Bruce Springsteen,boss,0.714218426,4
+,purple,touchdown,points,football,score,end zone,Super Bowl,touchdown,0.674209992,3
+,purple,fumble,football,drop,search,catch,hands,fumble,0.87584327,5
+,purple,jail,prison,cell,sentence,convict,bars,jail,0.458178973,5
+,purple,skill,talent,craft,aptitude,training,ability,skill,0.517163938,5
+,purple,temperature,fever,mouth,hot,baby,temperature,temperature,0.598811392,5
+,purple,nozzle,faucet,shower,hose,water,adjust,nozzle,0.740718167,5
+,purple,negative,positive,minus,film,picture,attitude,negative,0.577119601,5
+,purple,toll,bell,highway,booth,fee,pay,toll,0.774323303,5
+,purple,flip flops,summer,sandals,beach,casual,reverse,flip flops,,0
+,purple,graduation,ceremony,school,cap,diploma,gown,graduation,0.620624247,5
+,purple,mistletoe,hang,kiss,Christmas,green,under,mistletoe,0.895047874,5
+,purple,panic,attack,fret,worry,calm,stress,panic,0.686848232,5
+,purple,purple,color,blue,violet,heart,rain,purple,0.584831235,5
+,purple,huddle,gather,football,group,play,together,huddle,0.823499601,5
+,purple,prom,dance,dress,tux,date,queen,prom,0.705440634,5
+,purple,sulk,pout,mope,frown,kids,silent,sulk,0.752529778,5
+,purple,puke,vomit,barf,sick,throw up,nauseous,puke,0.705173062,4
+,purple,taxes,IRS,deduction,extension,credit,pay,taxes,0.591717365,5
+,purple,stable,horse,relationship,steady,even,farm,stable,0.673524779,5
+,purple,rain forest,Amazon,tropical,river,wildlife,trees,rain forest,,0
+,purple,slap,strike,hit,smake,face,hand,slap,0.728281435,4
+2,red,zebra,black,white,stripes,horse,zoo,zebra,0.769545954,5
+,red,smear,lipstick,campaign,smudge,wipe,ink,smear,0.727486512,5
+,red,thug,brute,criminal,gang,violent,jail,thug,0.779925999,5
+,red,static,cling,electricity,tradition,stationary,constant,static,0.725753361,5
+,red,tweezers,pluck,pull,eyebrow,splinter,squeeze,tweezers,0.826736288,5
+,red,trolley car,tracks,San Francisco,cable,train,street,trolley car,,0
+,red,sword,knife,weapon,fencing,steel,blade,sword,0.622938886,5
+,red,tip,gratuity,restaurant,meal,bill,off,tip,0.776431398,5
+,red,outhouse,toilet,John,half-moon,bathroom,latrine,outhouse,0.733780971,5
+,red,suds,soap,foam,wash,bathroom,bubbles,suds,0.752122739,5
+,red,teapot,boil,water,coffee,kettle,whistle,teapot,0.853589779,5
+,red,piano,keys,lesson,instrument,grand,music,piano,0.618505561,5
+,red,hamster,animal,rodent,vage,gerbil,wheel,hamster,0.682727046,4
+,red,fudge,chocolate,ice cream,candy,hot,sundae,fudge,0.543774284,4
+,red,tweet,bird,chirp,Twitter,140,news,tweet,0.798157554,5
+,red,touch,hands,don't,feel,reach,down,touch,0.622442298,4
+,red,ransom,kidnap,money,hostage,pay,take,ransom,0.618970808,5
+,red,volcano,eruption,lava,Iceland,Hawaii,flow,volcano,0.549944115,5
+,red,smoke,detector,fire,stack,cigarette,light,smoke,0.610416877,5
+,red,sunflower,yellow,oil,seeds,bloom,tall,sunflower,0.759630445,5
+,red,lighthouse,building,warning,coast,ships,fog,lighthouse,0.769146398,5
+,red,vineyard,wine,tour,grapes,tasting,Napa Valley,vineyard,0.646013867,4
+,red,shake,ice cream,frappe,move,rattle,roll,shake,0.693617994,4
+,red,vitamin C,nutrition,colds,oranges,citrus,immunity,vitamin c,,0
+,red,valet,parking,drive,tip,car,restaurant,valet,0.786303847,5
+,red,marble,ball,game,collection,cake,swirl,marble,0.87790743,5
+,red,marriage,wedding,husband,wife,ceremony,vows,marriage,0.585361576,5
+,red,wishing well,magic,coin,fairytale,water,grant,wishing well,,0
+,red,keys,house,car,heart,lost,Florida,keys,0.777018777,5
+,red,poem,limerick,rhyme,verse,write,words,poem,0.598284939,5
+,red,pen,write,ball-point,felt-tip,pal,ink,pen,0.678325638,3
+,red,straw,sip,camel,hay,berry,scarecrow,straw,0.837423781,5
+,red,scarecrow,straw,The Wizard of Oz,garden,field,birds,scarecrow,0.969623707,4
+,red,snorkel,swim,fins,underwater,ocean,scuba,snorkel,0.621956079,5
+,red,salt,sea,water,pepper,table,food,salt,0.637567025,5
+,red,wet,damp,dry,water,rain,drenched,wet,0.494166392,5
+,red,welcome,you're,thank you,greeting,warm,mat,welcome,0.588749101,3
+,red,trophy,cup,prize,award,win,sports,trophy,0.593609899,5
+,red,tired,fatigue,sleep,deprived,worn out,newborn,tired,0.758828182,4
+,red,tombstone,grave,marker,funeral,cemetery,bury,tombstone,0.728611016,5
+,red,stars,sky,night,twinkle,celebrity,dancing,stars,0.68081139,5
+,red,pool,billiards,swimming,ground,water,dive,pool,0.626536644,5
+,red,stomach,belly,gut,flat,muscles,tummy,stomach,0.630941355,5
+,red,hunk,attractive,gorgeous,handsome,guy,meat,hunk,0.719435444,5
+,red,manicure,fingernail,polish,file,hand,women,manicure,0.933758655,5
+,red,snowflake,winter,white,ice,big,catch,snowflake,0.985781543,5
+,red,trigger,gun,blast,horse,pull,shoot,trigger,0.721809042,5
+,red,yesterday,past,before,hours,time,tomorrow,yesterday,0.623864156,5
+,red,shrimp,seafood,prawn,jumbo,shellfish,scampi,shrimp,0.508900994,5
+,red,shampoo,wash,hair,lather,suds,conditioner,shampoo,0.594809043,5
+,red,whisper,speak,soft,ear,secret,loud,whisper,0.707624985,5
+,red,strapless,gown,shoulders,bathing suit,bare,dress,strapless,0.592592709,4
+,red,simple,plain,easy,difficult,hard,stupid,simple,0.562967247,5
+,red,secret,agent,top,classified,tell,keep,secret,0.637255371,5
+,red,tape,duct,masking,cassette,video,scotch,tape,0.532830584,5
+,red,vote,elect,ballot,cast,November,candidate,vote,0.474359971,5
+,red,windmill,Holland,Dutch,building,blades,energy,windmill,0.853788574,5
+,red,mad,insane,crazy,angry,furious,mood,mad,0.702955779,5
+,red,yellow,color,red,banana,lemon,sundae,yellow,0.67161539,5
+,red,parsley,garnish,food,green,herb,spice,parsley,0.712982355,5
+,red,snowman,Frosty,abominable,build,winter,make,snowman,0.771365611,5
+,red,helmet,head,bicycle,protect,safety,injuries,helmet,0.705831,5
+,red,scoop,ice cream,cone,reporter,newspaper,story,scoop,0.858634744,4
+,red,hiccup,bout,eat,drink,breath,air,hiccup,0.994821236,5
+,red,stiff,rigid,corpse,dead,drink,board,stiff,0.838116134,5
+,red,sleepwalk,awake,move,wander,pajamas,night,sleepwalk,0.967167952,5
+,red,yawn,tired,sleep,snooze,open,mouth,yawn,0.881754057,5
+,red,surprise,astonish,party,expect,birthday,off-guard,surprise,0.799400469,5
+,red,spy,CIA,traitor,secret,James Bond,undercover,spy,0.584752344,4
+,red,queen,Elizabeth,king,woman,royal,England,queen,0.49456141,5
+,red,teacher,school,learn,grade,student,professor,teacher,0.482079452,5
+,red,tuxedo,formal,prom,jacket,black tie,wedding,tuxedo,0.697562151,4
+,red,snore,sleep,disrupt,night,nose,noise,snore,0.907107833,5
+,red,stop,light,sign,it,by,red,stop,0.663917565,5
+,red,street,road,avenue,way,drive,cross,street,0.605540061,5
+,red,stagger,sway,hesitate,walk,unsteady,straight,stagger,0.850054997,5
+,red,yo-yo,toy,string,up,down,spin,yo-yo,1.014426677,5
+,red,plumber,leak,pipes,toilet,sink,fix,plumber,0.803767866,5
+,red,waiter,restaurant,waitress,serve,tip,eat,waiter,0.661950442,5
+,red,sunburn,red,skin,lotion,tan,vacation,sunburn,0.799100008,5
+,red,pin,needle,point,down,safety,brooch,pin,0.79176591,5
+,red,twins,babies,two,identical,fraternal,Minnesota,twins,0.637593246,5
+,red,karaoke,sing,along,words,duet,pub,karaoke,0.760837638,5
+,red,watch,wrist,clock,time,wear,look,watch,0.621351835,5
+,red,midnight,twelve o' clock,curfew,noon,time,strike,midnight,0.521355286,4
+,red,wrinkle,crease,line,old,skin,face,wrinkle,0.902350737,5
+,red,wine,red,white,cocktail,glass,cheese,wine,0.660377717,5
+,red,sweat,perspire,hot,exercise,wet,water,sweat,0.730792901,5
+,red,truffle,chocolate,mushroom,white,black,oil,truffle,0.690956336,5
+,red,quintuplets,babies,five,birth,twins,multiple,quintuplets,0.860410637,5
+,red,tag,price,hash,sale,label,along,tag,0.808214062,5
+,red,pound,weight,currency,ounce,dog,calories,pound,0.717395166,5
+,red,watermelon,fruit,seeds,picnics,pink,green,watermelon,0.724712516,5
+,red,skateboard,wheels,roll,park,trucks,Tony Hawk,skateboard,0.789008819,4
+,red,pose,photograph,model,picture,stand,still,pose,0.72298983,5
+,red,knife,cutlery,sharp,spoon,fork,set,knife,0.684213144,5
+,red,snowboard,ski,snow,winter,Shaun White,halfpipe,snowboard,0.568649709,4
+,red,tent,camping,woods,sleep,outside,circus,tent,0.673948073,5
+,red,jersey,new,state,shirt,wear,shore,jersey,0.658799177,5
+,red,peak,summit,mountain,point,career,shape,peak,0.715858263,5
+,red,oatmeal,cereal,breakfast,cookies,Quaker,hot,oatmeal,0.547656602,5
+,red,polo,sport,horses,mallet,shirt,royalty,polo,0.761794022,5
+,red,sweet,sugary,tea,nice,sour,sixteen,sweet,0.645463473,5
+,red,waterfall,Niagra,cliff,river,over,bridge,waterfall,0.734228066,5
+,red,theme park,rides,entertainment,family,roller coaster,Disney,theme park,,0
+,red,mirror,wall,see,reflection,looking-glass,rear view,mirror,0.708423631,4
+,red,jockey,ride,horse,race,saddle,track,jockey,0.631680644,5
+,red,stress,nervous,tense,pressure,anxiety,work,stress,0.609044674,5
+,red,tropical,climate,weather,storm,vacation,flowers,tropical,0.636593023,5
+,red,spatula,cook,kitchen,flip,food,utensil,spatula,0.810498522,5
+,red,wallet,billfold,purse,money,credit card,pocket,wallet,0.576655634,4
+,red,waffle,Belgian,iron,strawberries,breakfast,syrup,waffle,0.748780245,5
+,red,snack,hungry,food,fruit,time,healthy,snack,0.703895998,5
+,red,strategy,plan,business,tactics,think,plot,strategy,0.541651165,5
+,red,turkey,gobble,Thanksgiving,stuffing,drumstick,bird,turkey,0.804682423,5
+,red,trunk,elephant,car,suitcase,tree,spare tire,trunk,0.663026348,4
+,red,violin,music,instrument,string,bow,chin,violin,0.659426151,5
+,red,stunt,extreme,car,risk,man,danger,stunt,0.818159568,5
+3,yellow,journey,trip,travel,adventure,go,band,journey,0.570224693,5
+172,yellow,geometry,angle,math,shape,school,algebra,geometry,0.642743558,5
+173,yellow,dimples,face,smile,cheek,cute,baby,dimples,0.856854441,5
+174,yellow,snob,better,rich,uppity,nose,conceited,snob,0.877053514,5
+175,yellow,paint,color,brush,wall,house,artist,paint,0.65237166,5
+176,yellow,blow,wind,air,mouth,off,bubble,blow,0.727439615,5
+177,yellow,hypnosis,trance,sleep,watch,relax,subconscious,hypnosis,0.825260873,5
+178,yellow,lunch,meal,break,noon,eat,breakfast,lunch,0.490232414,5
+179,yellow,honesty,truth,lie,integrity,honor,trustworthy,honesty,0.630434024,5
+180,yellow,quit,resign,stop,give up,job,fire,quit,0.58612635,4
+181,yellow,milk,drinks,cow,gallon,dairy,got,milk,0.567951992,5
+182,yellow,brandy,booze,drink,cocktail,liquor,alcohol,brandy,0.720489636,5
+183,yellow,museum,art,paintings,exhibits,night,collection,museum,0.493182611,5
+184,yellow,canoe,boat,paddle,kayak,water,dugout,canoe,0.552843338,5
+185,yellow,organic,food,natural,cotton,basic,pesticides,organic,0.635358828,5
+186,yellow,diamond,marriage,ring,engagement,rock,carat,diamond,0.71993047,5
+187,yellow,butter,margarine,spread,dairy,bake,popcorn,butter,0.548451608,5
+188,yellow,lipstick,mouth,makeup,cosmetic,red,tube,lipstick,0.729791322,5
+189,yellow,bubble gum,chew,baseball card,bazooka,blow,balls,bubble gum,,0
+190,yellow,infinity,limitless,eternity,boundless,beyond,forever,infinity,0.813635308,5
+191,yellow,cast,actor,fishing,broken,plaster,bone,cast,0.750878496,5
+192,yellow,soup,tomato,chicken,salad,spoon,homemade,soup,0.490742803,5
+193,yellow,crab,seafood,shellfish,alaskan,claws,cakes,crab,0.549432975,5
+194,yellow,park,recreation,garage,cards,tree,Yellowstone,park,0.681035326,5
+195,yellow,tunnel,dirt,love,cars,mountains,hole,tunnel,0.775079302,5
+196,yellow,butterfly,wings,moth,caterpillar,cocoon,net,butterfly,0.756764388,5
+197,yellow,detective,investigate,crime,clues,private eye,Sherlock Holmes,detective,0.665116295,3
+198,yellow,scale,fish,weigh,diet,climb,pounds,scale,0.848835661,5
+199,yellow,crayon,wax,children,draw,kids,coloring book,crayon,0.854831471,4
+200,yellow,artist,painter,sculptor,canvas,studio,easel,artist,0.512703311,5
+201,yellow,flamingo,pink,bird,lawn,long,legs,flamingo,0.880639725,5
+202,yellow,duvet,bed,blanket,cover,feathers,quilt,duvet,0.810579537,5
+203,yellow,sauna,steam,room,hot,sweat,spa,sauna,0.680210027,5
+204,yellow,deck,ship,cards,hit,halls,porch,deck,0.668894044,5
+205,yellow,garage,car,park,house,band,door,garage,0.602759659,5
+206,yellow,fall,season,spring,winter,down,leaves,fall,0.559111106,5
+207,yellow,coincidence,unexpected,occurs,happen,same,chance,coincidence,0.706227019,5
+208,yellow,feather,wing,pillow,fly,bird,light,feather,0.745868251,5
+209,yellow,chill,cold,ice,night,air,bone,chill,0.720149787,5
+210,yellow,field,grass,green,wildflowers,run,picnic,field,0.732221471,5
+211,yellow,ice,cube,water,drink,winter,tea,ice,0.650736475,5
+212,yellow,jump,rope,off,up,down,high,jump,0.647551978,5
+213,yellow,globe,world,map,ball,round,earth,globe,0.820205072,5
+214,yellow,cupcake,frosting,party,bake,foil,wars,cupcake,0.804820772,5
+215,yellow,spider,eight,legs,insect,black widow,web,spider,0.76390591,4
+216,yellow,desert,sahara,cactus,hot,dry,sand,desert,0.610415721,5
+217,yellow,forest,trees,national,fires,wood,see,forest,0.615884486,5
+219,yellow,customer,store,buy,sell,pay,customer,customer,0.505770802,5
+220,yellow,explode,blow,detonate,burst,dynamite,bomb,explode,0.534470403,5
+221,yellow,helicopter,blade,ride,chopper,fly,pad,helicopter,0.654251692,5
+222,yellow,mop,sweep,bucket,clean,floor,spill,mop,0.742669636,5
+223,yellow,pat,tap,back,down,praise,name,pat,0.838220529,5
+224,yellow,ghost,Casper,spirit,Halloween,sheet,haunted,ghost,0.691286489,5
+225,yellow,island,adventure,ocean,tropical,breeze,Caribbean,island,0.680019103,5
+226,yellow,stripes,horizontal,vertical,lines,flag,stars,stripes,0.643609565,5
+227,yellow,money,dollars,cents,buy,spend,cash,money,0.500624448,5
+228,yellow,swamp,water,mud,marsh,boat,alligator,swamp,0.685014483,5
+229,yellow,quick,fast,express,rapid,hasty,swift,quick,0.551363099,5
+230,yellow,fake,fraud,con,real,phony,counterfeit,fake,0.583323962,5
+231,yellow,pretzel,twisted,salty,snack,dough,mustard,pretzel,0.707264197,5
+,yellow,ancient,old,history,past,time,Rome,ancient,0.669580862,5
+,yellow,heart,beat,break,attack,burn,love,heart,0.697274652,5
+,yellow,license,driver,permit,tag,plate,poetic,license,0.659211674,5
+,yellow,garlic,smell,cook,press,pasta,breath,garlic,0.710531117,5
+,yellow,moon,night,sky,sun,full,Neil Artmstrong,moon,0.649620727,4
+,yellow,germ,disease,spread,virus,bacteria,cold,germ,0.704536152,5
+,yellow,jackpot,win,hit,gamble,money,lottery,jackpot,0.732521935,5
+,yellow,cobweb,spider,trap,hang,spin,insect,cobweb,0.915608574,5
+,yellow,engine,motor,cards,light,train,hood,engine,0.745476132,5
+,yellow,chopsticks,wood,piano,utensil,eat,fork,chopsticks,0.779341078,5
+,yellow,crash,stock market,accident,car,party,collision,crash,0.51358274,4
+,yellow,geyser,Old Faithful,hot,water,shoot,Yellowstone,geyser,0.847031267,4
+,yellow,debut,premiere,introduction,first,society,perform,debut,0.699675768,5
+,yellow,refrigerator,door,freezer,cold,food,raid,refrigerator,0.64525397,5
+,yellow,confetti,paper,scraps,throw,wedding,celebration,confetti,0.761354917,5
+,yellow,curfew,date,teenagers,time,rules,home,curfew,0.82280304,5
+,yellow,earth,globe,world,planet,ground,mother,earth,0.607283601,5
+,yellow,belly button,navel,tummy,ring,cord,lint,belly button,,0
+,yellow,chandelier,light,ceiling,fixture,crystal,dining,chandelier,0.707014847,5
+,yellow,bulb,light,glass,watt,tulip,plant,bulb,0.67111055,5
+,yellow,decipher,decode,interpret,secret,read,figure,decipher,0.694974536,5
+,yellow,score,total,music,goal,average,test,score,0.605115467,5
+,yellow,newspaper,print,press,daily,reporters,read,newspaper,0.511011553,5
+,yellow,knot,tie,rope,loop,shoelace,tangle,knot,0.638760453,5
+,yellow,rhyme,poem,sound,words,alike,nursery,rhyme,0.732933026,5
+,yellow,costume,Halloween,scary,play,stage,party,costume,0.751154837,5
+,yellow,parrot,bird,pet,mimic,speech,imitate,parrot,0.773768503,5
+,yellow,nest,bird,eggs,tree,home,build,nest,0.66288467,5
+,yellow,kite,fly,wind,string,park,sky,kite,0.809636805,5
+,yellow,band,group,rubber,school,orchestra,wedding,band,0.697976193,5
+,yellow,lizard,snake,reptile,salamander,chameleon,alligator,lizard,0.535899419,5
+,yellow,rug,floor,carpet,oriental,toupee,hairpiece,rug,0.675095338,5
+,yellow,gravity,spave,force,earth,weight,physics,gravity,0.636044845,4
+,yellow,forecast,weather,future,radio,prediction,news,forecast,0.649416122,5
+,yellow,diner,eat,greasy spoon,restaurant,truck stop,50s,diner,0.662537525,3
+,yellow,doll,house,baby,toy,girl,paper,doll,0.644362089,5
+,yellow,circle,shape,round,ring,friends,full,circle,0.704742572,5
+,yellow,invitation,wedding,RSVP,mail,party,friend,invitation,0.743664438,5
+,yellow,fajita,Mexican,wrap,cheese,peppers,salsa,fajita,0.843465569,5
+,yellow,gallery,art,museum,collections,shower,paintings,gallery,0.541049226,5
+,yellow,insomnia,sleep,toss,restless,bed,night,insomnia,0.818023369,5
+,yellow,couch,potato,sofa,sit still,furniture,leather,couch,0.615179297,4
+,yellow,reindeer,Christmas,Santa,sleigh,Rudolph,red-nosed,reindeer,0.626877421,5
+,yellow,break,snap,fractire,separate,rest,lucky,break,0.667479023,4
+,yellow,healthy,well,fit,exercise,feel,shape,healthy,0.626632243,5
+,yellow,coach,sports,team,leader,improve,teach,coach,0.706082812,5
+,yellow,float,swim,raft,parade,root beer,water,float,0.663756654,4
+,yellow,shuffle,cards,feet,dance,walk,board,shuffle,0.847258535,5
+,yellow,heist,robber,thief,steal,art,Gene Hackman,heist,0.636134584,4
+,yellow,nutcracker,ballet,open,suite,Christmas,dance,nutcracker,0.762957154,5
+,yellow,fan,ceiling,air conditioner,cool,cheer,mail,fan,0.757551294,4
+,yellow,honey,bees,sweetheart,bear,shrunk,hive,honey,0.704981618,5
+,yellow,pomegranate,fruit,tree,health,juice,red,pomegranate,0.714641367,5
+,yellow,clumsy,awkward,uncoordinated,drop,oaf,klutz,clumsy,0.692357538,5
+,yellow,sip,drink,taste,wine,take,straw,sip,0.746446942,5
+,yellow,cream,coffee,tea,milk,ice,whipped,cream,0.517458016,5
+,yellow,brown,color,beige,black,golden,sugar,brown,0.613066983,5
+,yellow,map,find,drive,lost,route,road,map,0.787066767,5

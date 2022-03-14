@@ -1,0 +1,584 @@
+---
+title: 'Taboo: Analysis of target cards'
+author: "Sean Trott"
+date: "9/28/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r include=FALSE}
+library(tidyverse)
+library(forcats)
+library(lme4)
+library(MASS)
+library(broom.mixed)
+```
+
+# Introduction
+
+In this document, we explore whether features of the **target word** explain variance in **trial outcomes** (e.g., success vs. loss). This can be seen as an extension to the **Behavioral Analysis** document, which attempts to identify experimental variables (`pair_type`, `trial_with_partner` that predict outcomes). 
+
+
+# Load behavioral data
+
+Here, we load the behavioral results and quickly preprocess them in an identical way to the Behavioral Analysis.
+
+```{r}
+# read data
+## setwd("/Users/seantrott/Dropbox/UCSD/Research/Ambiguity/Taboo/Experiment1/analysis/reports")
+df = read.csv("../../data/processed/behavioral_results_public.csv")
+
+df = df %>%
+   filter(Native_Speaker == "Yes")
+
+```
+
+## Remove sessions 10 and 15
+
+```{r}
+df = df %>%
+  filter((session_id %in% c(10, 15)) == FALSE)
+df$word = tolower(df$card)
+nrow(df)
+```
+
+
+
+# Load lexical statistics
+
+Here, we load databases with the following information:
+
+- Brysbaert concreteness norms   
+- SUBTLEX (for frequency measures)
+- Kuperman et al Age of Acquisition measures
+
+```{r}
+## Concreteness norms
+df_concreteness = read_csv("../../data/lexical_statistics/brysbaert_norms.csv")
+df_concreteness$word = df_concreteness$Word
+## SUBTLEX frequency data
+df_subtlex = read_csv("../../data/lexical_statistics/SUBTLEXusfrequencyabove1.csv")
+df_subtlex$word = df_subtlex$Word
+## AoA norms
+df_aoa = read_csv("../../data/lexical_statistics/AoA_ratings_Kuperman_et_al_BRM.csv")
+df_aoa$AoA = df_aoa$Rating.Mean
+df_aoa$word = tolower(df_aoa$Word)
+```
+
+
+We also load a dataset containing the average distance between the target word and each taboo word.
+
+```{r}
+df_distance_to_taboo = read_csv("../../data/lexical_statistics/taboo_with_distances.csv")
+
+df_distance_to_taboo = df_distance_to_taboo %>%
+  mutate(word = target) %>%
+  drop_na(avg_distance_to_taboo) %>%
+  dplyr::select(word, avg_distance_to_taboo) %>%
+  filter(word %in% df$word)
+nrow(df_distance_to_taboo)
+
+```
+
+
+# Merge with Taboo data
+
+We then merge that data with the Taboo data.
+
+```{r}
+
+df_merged = df %>%
+  inner_join(df_concreteness, by = "word") %>%
+  inner_join(df_subtlex, by = "word") %>%
+  inner_join(df_aoa, by = "word") %>%
+  inner_join(df_distance_to_taboo, by = "word")
+nrow(df_merged)
+
+
+### Now remove critical NA observations for these columns
+df_merged = df_merged %>% 
+  drop_na(Conc.M) %>%
+  drop_na(Lg10WF) %>%
+  drop_na(AoA)
+nrow(df_merged)
+
+### Also restrict POS to Noun, Verb, and Adjective 
+df_merged = df_merged %>%
+  filter(Dom_Pos %in% c("Noun", "Verb", "Adjective"))
+nrow(df_merged)
+table(df_merged$Dom_Pos)
+
+
+## Mean concreteness
+df_merged_unique = df_merged %>%
+  group_by(card) %>%
+  summarise(conc = mean(Conc.M, na.rm = TRUE))
+mean(df_merged_unique$conc)
+median(df_merged_unique$conc)
+  
+```
+
+
+
+# Primary analyses
+
+## Is success (win vs. out of time) predicted by characteristics of the target word?
+
+Note that past work (Zdrazilova et al, 2018) found that `Concreteness` predicted accuracy in a similar taboo expeirmental task. Here, we again ask whether `Concreteness` (using a continuous measure) and other lexical statistics predict trial success (`win` vs. `out of time`); a separate analysis asks whether these statistics predict `win` vs. `lose` (e.g., using a taboo gesture).
+
+We first construct a full model containing all these lexical statistics, then compare that model to a series of reduced models omitting each in turn. The random factors and covariates (`trial_with_partner`) are chosen to reflect the factors found to be predictive in the Behavioral Analysis.
+
+
+```{r}
+df_win_lose = df_merged %>%
+    filter(trial_result %in% c("Won", "Out of time"))
+nrow(df_win_lose)
+
+
+model_full = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     trial_with_partner +
+                     Dom_Pos +
+                     avg_distance_to_taboo + 
+                     Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_conc = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     trial_with_partner +
+                     avg_distance_to_taboo +
+                     Dom_Pos +
+                     # Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_aoa = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     trial_with_partner +
+                     avg_distance_to_taboo + 
+                     Dom_Pos +
+                     Conc.M +
+                     Lg10WF +
+                    #  AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_frequency = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     trial_with_partner +
+                     avg_distance_to_taboo +
+                     Dom_Pos +
+                     Conc.M +
+                     # Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_turn = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     # trial_with_partner +
+                     Dom_Pos +
+                     avg_distance_to_taboo + 
+                     Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_pos = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     trial_with_partner +
+                     # Dom_Pos +
+                     avg_distance_to_taboo + 
+                     Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_distance = glmer(data = df_win_lose,
+                   trial_result ~ 
+                     trial_with_partner +
+                     Dom_Pos +
+                     # avg_distance_to_taboo + 
+                     Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+comparison_conc = anova(model_full, model_no_conc)
+comparison_conc
+comparison_aoa = anova(model_full, model_no_aoa)
+comparison_aoa
+comparison_freq = anova(model_full, model_no_frequency)
+comparison_freq
+comparison_turn = anova(model_full, model_no_turn)
+comparison_turn
+comparison_pos = anova(model_full, model_no_pos)
+comparison_pos
+comparison_distance = anova(model_full, model_no_distance)
+comparison_distance
+```
+
+
+We can also visualize coefficients from the full model:
+
+```{r}
+summary(model_full)
+
+df_tidy = broom.mixed::tidy(model_full)
+
+df_tidy %>%
+  filter(effect == "fixed") %>%
+  ggplot(aes(x = term,
+             y = estimate)) +
+  geom_point() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  geom_errorbar(aes(ymin = estimate - 2*std.error, 
+                    ymax = estimate + 2*std.error), 
+                width=.2,
+                position=position_dodge(.9)) +
+  labs(x = "Predictor",
+       y = "Estimate") +
+  theme_minimal()
+```
+
+
+Now we correct for multiple comparisons.
+
+```{r}
+p.adjust(c(comparison_conc$`Pr(>Chisq)`[2],
+           comparison_aoa$`Pr(>Chisq)`[2],
+           comparison_freq$`Pr(>Chisq)`[2],
+           comparison_turn$`Pr(>Chisq)`[2],
+           comparison_pos$`Pr(>Chisq)`[2],
+           comparison_distance$`Pr(>Chisq)`[2]), 
+         method="holm")
+```
+ 
+
+We can also visualize these new findings about the lexical statistics:
+
+```{r}
+df_win_lose %>%
+  ggplot(aes(x = Conc.M,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  theme_minimal()
+
+df_win_lose %>%
+  ggplot(aes(x = Lg10WF,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  theme_minimal()
+
+df_win_lose %>%
+  ggplot(aes(x = AoA,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  theme_minimal()
+
+```
+
+
+We can also visualize each together:
+
+```{r}
+df_win_lose %>%
+  ggplot(aes(x = Lg10WF,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  labs(x = "Log(Frequency)",
+       fill = "Trial Outcome") +
+  theme_minimal() +
+  theme(axis.title = element_text(size=rel(1.5)),
+        axis.text = element_text(size = rel(1.5)),
+        legend.text = element_text(size = rel(1.5)),
+        strip.text.x = element_text(size = rel(1.5)),
+        plot.title = element_text(size = rel(1.5)),
+        legend.title = element_text(size = rel(1.5)))
+
+ggsave("../../Figures/target_word/frequency.png", dpi = 300)
+
+df_win_lose %>%
+  ggplot(aes(x = Conc.M,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  labs(x = "Concreteness",
+       fill = "Trial Outcome") +
+  theme_minimal() +
+  theme(axis.title = element_text(size=rel(1.5)),
+        axis.text = element_text(size = rel(1.5)),
+        legend.text = element_text(size = rel(1.5)),
+        strip.text.x = element_text(size = rel(1.5)),
+        plot.title = element_text(size = rel(1.5)),
+        legend.title = element_text(size = rel(1.5)))
+
+ggsave("../../Figures/target_word/concreteness.png", dpi = 300)
+
+df_win_lose %>%
+  ggplot(aes(x = AoA,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  labs(x = "Age of Acquisition",
+       fill = "Trial Outcome") +
+  theme_minimal() +
+  theme(axis.title = element_text(size=rel(1.5)),
+        axis.text = element_text(size = rel(1.5)),
+        legend.text = element_text(size = rel(1.5)),
+        strip.text.x = element_text(size = rel(1.5)),
+        plot.title = element_text(size = rel(1.5)),
+        legend.title = element_text(size = rel(1.5)))
+
+ggsave("../../Figures/target_word/aoa.png", dpi = 300)
+
+
+```
+
+
+
+## Is outcome (win vs. lose) predicted by lexical statistics?
+
+Here, we run the same analyses as above but for a different contrast: `win` vs. `lose` (where "lose" is defined by using a taboo word or gesture).
+
+
+```{r}
+df_win_lose2 = df_merged %>%
+    filter(trial_result %in% c("Won", "Lost"))
+nrow(df_win_lose2)
+  
+
+model_full = glmer(data = df_win_lose2,
+                   trial_result ~ 
+                     trial_with_partner +
+                     avg_distance_to_taboo +
+                     Dom_Pos +
+                     Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+
+model_no_conc = glmer(data = df_win_lose2,
+                   trial_result ~ 
+                     trial_with_partner +
+                     Dom_Pos +
+                     # Conc.M +
+                     avg_distance_to_taboo +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_aoa = glmer(data = df_win_lose2,
+                   trial_result ~ 
+                     trial_with_partner +
+                     Dom_Pos +
+                     avg_distance_to_taboo +
+                     Conc.M +
+                     Lg10WF +
+                    #  AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_frequency = glmer(data = df_win_lose2,
+                   trial_result ~ 
+                     trial_with_partner +
+                     Dom_Pos +
+                     avg_distance_to_taboo + 
+                     Conc.M +
+                     # Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_turn = glmer(data = df_win_lose2,
+                   trial_result ~ 
+                     # trial_with_partner +
+                     Dom_Pos +
+                     avg_distance_to_taboo + 
+                     Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_pos = glmer(data = df_win_lose2,
+                   trial_result ~ 
+                     trial_with_partner +
+                     # Dom_Pos +
+                     avg_distance_to_taboo + 
+                     Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+model_no_distance = glmer(data = df_win_lose2,
+                   trial_result ~ 
+                     trial_with_partner +
+                     Dom_Pos +
+                     # avg_distance_to_taboo + 
+                     Conc.M +
+                     Lg10WF +
+                     AoA +
+                     (1 | ppt_id) +
+                     (1 | partner_id) +
+                     (1 | Order) +
+                     (1 | session_id) +
+                     (1 | color),
+                   control=glmerControl(optimizer="bobyqa"),
+                   family = binomial())
+
+
+comparison_conc = anova(model_full, model_no_conc)
+comparison_conc
+comparison_aoa = anova(model_full, model_no_aoa)
+comparison_aoa
+comparison_freq = anova(model_full, model_no_frequency)
+comparison_freq
+comparison_turn = anova(model_full, model_no_turn)
+comparison_turn
+comparison_pos = anova(model_full, model_no_pos)
+comparison_pos
+comparison_distance = anova(model_full, model_no_distance)
+comparison_distance
+```
+
+
+We can also visualize coefficients from the full model:
+
+```{r}
+summary(model_full)
+
+df_tidy = broom.mixed::tidy(model_full)
+
+df_tidy %>%
+  filter(effect == "fixed") %>%
+  ggplot(aes(x = term,
+             y = estimate)) +
+  geom_point() +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dotted") +
+  geom_errorbar(aes(ymin = estimate - 2*std.error, 
+                    ymax = estimate + 2*std.error), 
+                width=.2,
+                position=position_dodge(.9)) +
+  labs(x = "Predictor",
+       y = "Estimate") +
+  theme_minimal()
+```
+
+
+
+Now we correct for multiple comparisons.
+
+```{r}
+p.adjust(c(comparison_conc$`Pr(>Chisq)`[2],
+           comparison_aoa$`Pr(>Chisq)`[2],
+           comparison_freq$`Pr(>Chisq)`[2],
+           comparison_turn$`Pr(>Chisq)`[2],
+           comparison_pos$`Pr(>Chisq)`[2],
+           comparison_distance$`Pr(>Chisq)`[2]), 
+         method="holm")
+```
+
+
+We can also visualize these new findings about the lexical statistics:
+
+```{r}
+df_win_lose2 %>%
+  ggplot(aes(x = Conc.M,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  theme_minimal()
+
+df_win_lose2 %>%
+  ggplot(aes(x = Lg10WF,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  theme_minimal()
+
+df_win_lose2 %>%
+  ggplot(aes(x = AoA,
+             fill = trial_result)) +
+  geom_density(alpha = .5) +
+  theme_minimal()
+```
