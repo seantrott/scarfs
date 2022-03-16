@@ -45,7 +45,8 @@ The analyses of the behavioral data involve a number of lexical statistics, incl
 - Age of acquisition (`AoA_ratings_Kuperman_et_al_BRM.csv`) 
 - Concreteness (`brysbaert_norms.csv`)  
 - Frequency (`taboo_with_distances.csv`)  
-- The semantic distance between the target and Taboo words (`taboo_with_distances.csv`)  
+- The semantic distance between the target and Taboo words (`taboo_with_distances.csv`) 
+- Lancaster Sensorimotor Norms (`lancaster_norms.csv`)   
 
 ## Analyses
 
