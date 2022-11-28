@@ -4,7 +4,7 @@ This is the dataset described in the paper:
 
 > Trott, S., Bergen, B., Wittenberg, E. (Under Review) SCARFS Database: Spontaneous, Controlled Acts of Reference between Friends and Strangers. 
 
-If you have any questions about the dataset, please contact Sean Trott (trott dot sean at gmail dot com), the owner of this repository.
+If you have any questions about the dataset, please contact Sean Trott (trott dot sean at gmail dot com), the owner of this repository. 
 
 ## Data
 
